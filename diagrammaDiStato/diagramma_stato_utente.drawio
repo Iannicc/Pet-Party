@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2023-05-25T15:55:50.429Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 OPR/98.0.0.0" etag="vPCUtfqLWj3f_X1whvzW" version="21.3.3" type="github">
+<mxfile host="app.diagrams.net" modified="2023-05-27T14:40:35.885Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36 OPR/98.0.0.0" etag="VNMhAFg_I2nFTU6ynWQf" version="21.3.4" type="github">
   <diagram name="Pagina-1" id="ZDK_hONH9NvYs_AdJ42P">
     <mxGraphModel dx="1050" dy="542" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -20,15 +20,27 @@
           <mxGeometry x="150" y="230" width="150" height="60" as="geometry" />
         </mxCell>
         <mxCell id="87MTOX2J1gJNZBFF_QMD-5" value="bloccoAssistenza/" style="endArrow=open;html=1;rounded=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;endFill=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
+          <mxGeometry y="-24" width="50" height="50" relative="1" as="geometry">
             <mxPoint x="174.5" y="130" as="sourcePoint" />
             <mxPoint x="174.5" y="230" as="targetPoint" />
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="87MTOX2J1gJNZBFF_QMD-6" value="sbloccoAssistenza/" style="endArrow=open;html=1;rounded=0;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;endFill=0;" parent="1" edge="1">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
+          <mxGeometry y="-33" width="50" height="50" relative="1" as="geometry">
             <mxPoint x="266.5" y="230" as="sourcePoint" />
             <mxPoint x="266.5" y="130" as="targetPoint" />
+            <mxPoint x="1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="OLoltCpDw_9X0u_QPn7u-1" value="errore 5 volte" style="endArrow=open;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endFill=0;" edge="1" parent="1" source="87MTOX2J1gJNZBFF_QMD-3" target="87MTOX2J1gJNZBFF_QMD-4">
+          <mxGeometry x="0.6" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="310" as="sourcePoint" />
+            <mxPoint x="218" y="230" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="225" y="210" />
+            </Array>
+            <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
       </root>
