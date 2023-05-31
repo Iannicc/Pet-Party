@@ -1,0 +1,88 @@
+h2 {
+  font-family: 'Puppies Play', cursive;
+  font-size: 100px;
+}
+
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 100px;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 13px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 90%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  //background-color: #82cfc3;
+  background-image: linear-gradient(45deg, #b5cf82, #CFC382);
+  margin-left: 13px;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus,
+.form-group textarea:focus {
+  //background-color: #c1e6e0; /* Change the background color here */
+  //outline: 2px dashed blue;
+  outline-color: #cf82b5;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button[type="submit"] {
+  /*background-color: #CFC382;*/
+  background-image: linear-gradient(45deg, #CFC382, #C382CF);
+  //background-image: linear-gradient(to right, #ff0000, #00ff00);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 60%;
+  margin-left: 10px;
+}
+
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.register-link a {
+  color: #4CAF50;
+  text-decoration: none;
+}
+
+.manImg {
+widht: 90px;
+height: 90px;
+//padding-bottom: 10px;
+vertical-align: middle;
+}
