@@ -1,9 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2023-06-08T13:59:18.291Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0" version="21.3.4" etag="1w_sFhPC0Vyp_zzpD_vG" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-08T13:59:30.553Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="xvqH61JTwETswvlSeVaR" version="21.3.4" type="github">
   <diagram name="Pagina-1" id="WEIXGsba5oYrV0iFf7vT">
-    <mxGraphModel>
+    <mxGraphModel dx="435" dy="795" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="svR1ZcD99htK7IwrSfZX-1" value="&lt;div&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;IHomeUtente&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="180" width="150" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="svR1ZcD99htK7IwrSfZX-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="svR1ZcD99htK7IwrSfZX-1">
+          <mxGeometry y="40" width="150" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="svR1ZcD99htK7IwrSfZX-3" value="&lt;div&gt;+getPost()&lt;/div&gt;&lt;div&gt;+getNotifiche()&lt;br&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="svR1ZcD99htK7IwrSfZX-1">
+          <mxGeometry y="48" width="150" height="42" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
