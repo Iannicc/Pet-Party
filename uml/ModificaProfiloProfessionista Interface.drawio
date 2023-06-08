@@ -1,9 +1,18 @@
-<mxfile host="app.diagrams.net" modified="2023-06-08T14:14:03.688Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0" version="21.3.4" etag="UJSmhyig-wnHoDP6KsHW" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-08T14:15:07.661Z" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="Wetmndm0oPPvTnvzR8wX" version="21.3.4" type="github">
   <diagram name="Pagina-1" id="_6Il499kz3vRL5eN-WHw">
-    <mxGraphModel>
+    <mxGraphModel dx="435" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="1R08ikdkkG048l9KvgBH-1" value="&lt;div&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/div&gt;&lt;div&gt;IModificaProfiloProfessionista&lt;br&gt;&lt;/div&gt;" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="210" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="1R08ikdkkG048l9KvgBH-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="1R08ikdkkG048l9KvgBH-1">
+          <mxGeometry y="40" width="210" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="1R08ikdkkG048l9KvgBH-3" value="+ModificaProfilo(Username, Profilo)" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="1R08ikdkkG048l9KvgBH-1">
+          <mxGeometry y="48" width="210" height="42" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
