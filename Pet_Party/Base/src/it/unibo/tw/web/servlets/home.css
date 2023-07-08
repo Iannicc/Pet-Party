@@ -1,0 +1,79 @@
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //font-family: Arial, sans-serif;
+	  background-color: #f2f2f2;
+      
+    }
+
+	h2 {
+        font-family: 'Puppies Play', cursive;
+        //font-size: 100px;
+  text-shadow: 2px 2px #f2f2f2;
+
+	   }
+    
+    #text {
+      font-size: 172px;
+	  position: absolute;
+      text-align: center;
+      transition: font-size 2s, transform 4s;
+    
+		}
+
+	.manImg {
+	widht: 90px;
+	height: 90px;
+	//padding-bottom: 10px;
+	vertical-align: middle;
+filter: drop-shadow(2px 2px 2px #f2f2f2);
+	}
+
+#loginb{
+  background-image: linear-gradient(45deg, #CFC382, #C382CF);
+  //padding: 15px 80px 15px 80px;	
+  width: 200px;
+  height: 50px;
+  border-radius: 4px;
+  border:none;
+  color: white;
+  margin-top: 150px;
+  position: absolute;
+  margin-right: 35rem;
+  opacity: 0;
+  transition:opacity 1s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    cursor:pointer;
+
+}
+
+#regb{
+  background-image: linear-gradient(45deg, #CFC382, #C382CF);
+  //padding: 15px 80px 15px 80px;	
+  width: 200px;
+  height: 50px;
+  border-radius: 4px;
+  border:none;
+  color: white;
+  margin-top: 150px;
+  position: absolute;
+  margin-left: 35rem;
+  opacity: 0;
+  transition:opacity 1s;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  cursor:pointer;
+}
+
+.pupp{
+  position:absolute;
+    top:0;
+    display:none;
+    width:100%;
+    height:100%;
+}
+
+
