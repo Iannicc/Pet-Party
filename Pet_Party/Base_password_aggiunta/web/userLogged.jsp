@@ -22,10 +22,9 @@
             <% UserBean currentUser = (UserBean) session.getAttribute("currentSessionUser");%>
 			
             Welcome <%= currentUser.getUsername() + " " + currentUser.getPassword() %>
+            <a href="NewPost.jsp">aggiungi post</a>
          </center>
 
       </body>
 	
    </html>
-
-				

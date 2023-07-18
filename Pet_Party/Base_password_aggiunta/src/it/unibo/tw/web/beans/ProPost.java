@@ -14,7 +14,7 @@ public class ProPost extends Post
 		super();
 	}
 
-	public ProPost(Date dataCreazione, Blob media, String descrizione, List<Commento> commenti, Set<Like> likes) {
+	public ProPost(Date dataCreazione, String media, String descrizione, List<Commento> commenti, Set<Like> likes) {
 		super(dataCreazione,media,descrizione,commenti,likes);
 	}
 }
