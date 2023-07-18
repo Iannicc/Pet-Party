@@ -56,12 +56,12 @@ public class LoginServlet extends HttpServlet {
 		utente1.setFollowers(followers1);
 		utente2.setFollowed(followed2);
 		utente2.setFollowers(followers2);
-		String pathCatImage= "file:///C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Base_HomeFeed_aggiunta/web/catDavide.jpeg"; 
-		String pathDogImage= "file:///C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Base_HomeFeed_aggiunta/web/dogGiacomo.jpeg";// Sostituisci con il percorso del tuo file immagine
+		String pathCatImage= "C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/catDavide.jpeg"; 
+		String pathDogImage= "C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/dogGiacomo.jpeg";// Sostituisci con il percorso del tuo file immagine
 		String catBase64 = convertImage(pathCatImage); 
 		String dogBase64 = convertImage(pathDogImage);
-		String pathDavide ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Base_HomeFeed_aggiunta/web/davide.jpg";
-		String pathGiacomo ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Base_HomeFeed_aggiunta/web/giacomo.jpg";
+		String pathDavide ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/davide.jpeg";
+		String pathGiacomo ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/giacomo.jpeg";
 		String davideBase64 =convertImage(pathDavide);
 		String giacomoBase64 =convertImage(pathGiacomo);
 		

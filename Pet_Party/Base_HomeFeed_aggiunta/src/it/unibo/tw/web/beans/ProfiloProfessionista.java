@@ -33,7 +33,7 @@ public class ProfiloProfessionista extends ProfiloUtente
 		return this.pubblicazioni.remove(pp);
 	}
 
-	public ProfiloProfessionista(String nome, String descrizione, Blob immagine, String cognome, String zona, String telefono, List<Animale> animali,
+	public ProfiloProfessionista(String nome, String descrizione, String immagine, String cognome, String zona, String telefono, List<Animale> animali,
 		List<ProPost> pubblicazioni) {
 		super(nome,descrizione,immagine,cognome,telefono,animali);
 		this.pubblicazioni = pubblicazioni;
