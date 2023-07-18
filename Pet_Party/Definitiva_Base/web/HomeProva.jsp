@@ -2,6 +2,8 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="it.unibo.tw.web.beans.Post" %>
 <%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
+<%@ page import="it.unibo.tw.web.beans.Animale" %>
+<%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
 <html lang="en">
   <head>
@@ -237,40 +239,44 @@
         <!-- post starts -->
         <div class="post">
         	<% UtenteStandard utenteLoggato = (UtenteStandard) this.getServletContext().getAttribute("currentSessionUser"); %>
-		        <% List<Post> posts = (List<Post>) this.getServletContext().getAttribute("posts");
-		           if (posts != null) {
-		               for (Post post : posts) { %>
-		               <div class="post">
-		               		<div class="post__top">
-		               		   <div class="post__topInfo">
-						         <h3>Somanath Goudar</h3>
-						         <p><%= post.getDataCreazione() %></p>
-						       </div>
-						    </div>
-						     <div class="post__bottom">
-					            <p><%= post.getDescrizione() %></p>
-					         </div>
-					         
-					          <div class="post__image">
-		                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
-		                      </div>
-		                     
-						   <div class="post__options">
-				            <div class="post__option">
-				              <span class="material-icons"> thumb_up </span>
-				              <p>Like</p>
-				            </div>
-				
-				            <div class="post__option">
-				              <span class="material-icons"> chat_bubble_outline </span>
-				              <p>Commenti</p>
-				            </div>
-				
-				          <br>
-				          </div>
-		               </div>
+		      <% for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
+		        <% for (Animale  animale : followed.getProfilo().getAnimali()) {
+		        	if (animale.getPosts() != null) {
+		        	  for (PostAnimale post : animale.getPosts()) {
+			        	   %>
+			               <div class="post">
+			               		<div class="post__top">
+			               		   <div class="post__topInfo">
+							         <h3><%= followed.getUsername() %></h3>
+							         <p><%= post.getDataCreazione() %></p>
+							       </div>
+							    </div>
+							     <div class="post__bottom">
+						            <p><%= post.getDescrizione() %></p>
+						         </div>
+						         
+						          <div class="post__image">
+			                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
+			                      </div>
+			                     
+							   <div class="post__options">
+					            <div class="post__option">
+					              <span class="material-icons"> thumb_up </span>
+					              <p>Like</p>
+					            </div>
+					
+					            <div class="post__option">
+					              <span class="material-icons"> chat_bubble_outline </span>
+					              <p>Commenti</p>
+					            </div>
+					
+					          <br>
+					          </div>
+			               </div>
 		        <%     }
-		           } %>
+		            }
+		        }
+		      } %>
         </div>
         <!-- post ends -->
 
