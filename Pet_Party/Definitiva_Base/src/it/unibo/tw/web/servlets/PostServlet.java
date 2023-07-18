@@ -38,7 +38,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	{	 
 		HttpSession session = request.getSession();
 		boolean isPro=false;
-		UtenteStandard user = (UtenteStandard) session.getAttribute("currentUser");
+		UtenteStandard user = (UtenteStandard) session.getAttribute("currentSessionUser");
 		if (isPro)
 		{
 			
