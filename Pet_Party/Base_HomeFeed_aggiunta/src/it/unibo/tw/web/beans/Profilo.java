@@ -6,7 +6,7 @@ public abstract class Profilo
 {
 	private String nome;
 	private String descrizione;
-	private Blob image;
+	private String image;
 	public String getNome() {
 		return nome;
 	}
@@ -19,16 +19,16 @@ public abstract class Profilo
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	public Blob getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(Blob image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public Profilo() {
 		super();
 	}
-	public Profilo(String nome, String descrizione, Blob image) {
+	public Profilo(String nome, String descrizione, String image) {
 		super();
 		this.nome = nome;
 		this.descrizione = descrizione;

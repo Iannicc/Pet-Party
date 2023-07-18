@@ -34,7 +34,7 @@ public class ProfiloUtente extends Profilo
 		super();
 	}
 	
-	public ProfiloUtente(String nome, String descrizione, Blob immagine, String cognome, String telefono, List<Animale> animali) {
+	public ProfiloUtente(String nome, String descrizione, String immagine, String cognome, String telefono, List<Animale> animali) {
 		super(nome,descrizione,immagine);
 		Cognome = cognome;
 		this.telefono = telefono;

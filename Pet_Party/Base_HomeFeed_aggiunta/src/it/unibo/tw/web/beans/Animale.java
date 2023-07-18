@@ -12,7 +12,7 @@ public class Animale extends Profilo
 	
 	
 	
-	public Animale(String nome, String descrizione, Blob immagine,String razza, String specie, Sesso sex, List<PostAnimale> posts) {
+	public Animale(String nome, String descrizione, String immagine,String razza, String specie, Sesso sex, List<PostAnimale> posts) {
 		super(nome,descrizione,immagine);
 		this.razza = razza;
 		this.specie = specie;

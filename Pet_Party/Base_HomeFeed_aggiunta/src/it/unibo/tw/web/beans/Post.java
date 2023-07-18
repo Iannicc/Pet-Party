@@ -11,7 +11,7 @@ public abstract class Post implements ISegnalabile {
 	private String descrizione;
 	private List<Commento> commenti= new ArrayList<Commento>();
 	private Set<Like>likes = new TreeSet<Like>();
-	private String base64;
+	protected String base64;
 	
 	public Date getDataCreazione() {
 		return dataCreazione;
