@@ -24,7 +24,6 @@ import it.unibo.tw.web.beans.Animale;
 import it.unibo.tw.web.beans.PostAnimale;
 import it.unibo.tw.web.beans.ProfiloUtente;
 import it.unibo.tw.web.beans.Sesso;
-import it.unibo.tw.web.beans.UserBean;
 import it.unibo.tw.web.beans.UtenteStandard;
 
 /**
@@ -96,8 +95,10 @@ public class LoginServlet extends HttpServlet {
         Set<Animale> animali = new HashSet<>();
         animali.add(a1);
         post2.setAnimali(animali2);
+        post2.setDescrizione("Bau bau");
         post2.setBase64(dogBase64);
         post1.setAnimali(animali);
+        post1.setDescrizione("Miao Miao");
         post1.setBase64(catBase64);
         java.util.Date current = new java.util.Date();
         Date date = new Date(current.getTime());
@@ -149,29 +150,31 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 try
 {	 
      String username = request.getParameter("username");
-     String password = request.getParameter("passoword");
+     String password = request.getParameter("password");
      String contextPath = request.getContextPath();
-
-  
 	   		    
      //if (user.isValid())
-	if (u1.getUsername().equals(username) && u1.getPassword().contentEquals(password))
+	if (u1.getUsername().compareTo(username)==0 && u1.getPassword().compareTo(password)==0)
      {
 	        
-          HttpSession session = request.getSession(true);	    
+          HttpSession session = request.getSession();
+          System.out.println("1");
           session.setAttribute("currentSessionUser",u1); 
+          System.out.println("2");
+          //this.getServletContext().getRequestDispatcher("/homeProva.jsp").forward(request, response);
           response.sendRedirect(request.getContextPath() + "/HomeFeed");
      }
 	        
-     else if (u2.getUsername().equals(username) && u2.getPassword().contentEquals(password))
+     else if (u2.getUsername().compareTo(username)==0 && u2.getPassword().compareTo(password)==0)
      {
 	        
-         HttpSession session = request.getSession(true);	    
+         HttpSession session = request.getSession();	    
          session.setAttribute("currentSessionUser",u2); 
          response.sendRedirect(request.getContextPath() + "/HomeFeed");
     }else
-    	
+    {
          response.sendRedirect(request.getContextPath() + "/invalidLogin.jsp");
+    }
 } 
 		
 		
