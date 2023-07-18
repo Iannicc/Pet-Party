@@ -84,7 +84,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	                    InputStream imageStream = item.getInputStream();
 	                    byte[] imageBytes = imageStream.readAllBytes();
 	                    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-	                   p.setMedia(base64Image);
+	                   p.setBase64(base64Image);
 	                }
 	            }
 	            p.setAnimali(raffigurati);
