@@ -7,7 +7,7 @@ import java.util.*;
 public abstract class Post implements ISegnalabile {
 
 	private Date dataCreazione;
-	private Blob media;
+	private String media;
 	private String descrizione;
 	private List<Commento> commenti= new ArrayList<Commento>();
 	private Set<Like>likes = new TreeSet<Like>();
@@ -21,10 +21,10 @@ public abstract class Post implements ISegnalabile {
 	public Post() {
 		super();
 	}
-	public Blob getMedia() {
+	public String getMedia() {
 		return media;
 	}
-	public void setMedia(Blob media) {
+	public void setMedia(String media) {
 		this.media = media;
 	}
 	public String getDescrizione() {
@@ -66,7 +66,7 @@ public abstract class Post implements ISegnalabile {
 	{
 		return this.likes.remove(l);
 	}
-	public Post(Date dataCreazione, Blob media, String descrizione, List<Commento> commenti,
+	public Post(Date dataCreazione, String media, String descrizione, List<Commento> commenti,
 			Set<Like> likes) {
 		super();
 		this.dataCreazione = dataCreazione;

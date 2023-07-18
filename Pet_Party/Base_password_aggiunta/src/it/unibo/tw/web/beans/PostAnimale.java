@@ -23,7 +23,7 @@ public class PostAnimale extends Post
 		super();
 	}
 	
-	public PostAnimale(Date dataCreazione, Blob media, String descrizione, List<Commento> commenti, Set<Like> likes , Set<Animale> animali) {
+	public PostAnimale(Date dataCreazione, String media, String descrizione, List<Commento> commenti, Set<Like> likes , Set<Animale> animali) {
 		super(dataCreazione,media,descrizione,commenti,likes);
 		this.animali=animali;
 	}
