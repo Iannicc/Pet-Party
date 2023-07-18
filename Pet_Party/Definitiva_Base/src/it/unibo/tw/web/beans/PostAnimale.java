@@ -31,7 +31,5 @@ public class PostAnimale extends Post
 		super(dataCreazione,media,descrizione,commenti,likes, base64);
 		this.animali=animali;
 	}
-	public void setBase64(String string) {
-		this.setBase64(string);
-	}
+
 }

@@ -56,12 +56,12 @@ public class LoginServlet extends HttpServlet {
 		utente1.setFollowers(followers1);
 		utente2.setFollowed(followed2);
 		utente2.setFollowers(followers2);
-		String pathCatImage= "C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/catDavide.jpeg"; 
-		String pathDogImage= "C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/dogGiacomo.jpeg";// Sostituisci con il percorso del tuo file immagine
+		String pathCatImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\catDavide.jpeg"; 
+		String pathDogImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiacomo.jpeg";  // Sostituisci con il percorso del tuo file immagine
 		String catBase64 = convertImage(pathCatImage); 
 		String dogBase64 = convertImage(pathDogImage);
-		String pathDavide ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/davide.jpeg";
-		String pathGiacomo ="C:/Users/hp/Documents/GitHub/Pet-Party/Pet_Party/Definitiva_Base/web/giacomo.jpeg";
+		String pathDavide ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\davide.jpg"; 
+		String pathGiacomo ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giacomo.jpeg"; 
 		String davideBase64 =convertImage(pathDavide);
 		String giacomoBase64 =convertImage(pathGiacomo);
 		
@@ -143,30 +143,34 @@ private String convertImage(String path) {
 public void doPost(HttpServletRequest request, HttpServletResponse response) 
 			           throws ServletException, java.io.IOException {
 	
-
+	UtenteStandard u1 = (UtenteStandard) this.getServletContext().getAttribute("davide");
+	UtenteStandard u2 = (UtenteStandard) this.getServletContext().getAttribute("giacomo");
 
 try
 {	 
-     UserBean user = new UserBean();
-     user.setUserName(request.getParameter("username"));
-     user.setPassword(request.getParameter("password"));
+     String username = request.getParameter("username");
+     String password = request.getParameter("passoword");
      String contextPath = request.getContextPath();
 
-     System.out.println(contextPath);
-
-
-     //user = UserDAO.login(user);
+  
 	   		    
      //if (user.isValid())
-	if (user.getUsername().contentEquals("gio") && user.getPassword().contentEquals("robiola"))
+	if (u1.getUsername().equals(username) && u1.getPassword().contentEquals(password))
      {
 	        
           HttpSession session = request.getSession(true);	    
-          session.setAttribute("currentSessionUser",user); 
+          session.setAttribute("currentSessionUser",u1); 
           response.sendRedirect(request.getContextPath() + "/HomeFeed");
      }
 	        
-     else 
+     else if (u2.getUsername().equals(username) && u2.getPassword().contentEquals(password))
+     {
+	        
+         HttpSession session = request.getSession(true);	    
+         session.setAttribute("currentSessionUser",u2); 
+         response.sendRedirect(request.getContextPath() + "/HomeFeed");
+    }else
+    	
          response.sendRedirect(request.getContextPath() + "/invalidLogin.jsp");
 } 
 		

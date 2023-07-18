@@ -262,7 +262,7 @@
 				
 				            <div class="post__option">
 				              <span class="material-icons"> chat_bubble_outline </span>
-				              <p>Comment</p>
+				              <p>Commenti</p>
 				            </div>
 				
 				          <br>
