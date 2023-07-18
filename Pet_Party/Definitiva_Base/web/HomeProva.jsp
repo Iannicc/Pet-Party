@@ -1,7 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="it.unibo.tw.web.beans.Post" %>
-
+<%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
 
 <html lang="en">
   <head>
@@ -236,7 +236,8 @@
 
         <!-- post starts -->
         <div class="post">
-		        <% List<Post> posts = (List<Post>) request.getAttribute("posts");
+        	<% UtenteStandard utenteLoggato = (UtenteStandard) this.getServletContext().getAttribute("currentSessionUser"); %>
+		        <% List<Post> posts = (List<Post>) this.getServletContext().getAttribute("posts");
 		           if (posts != null) {
 		               for (Post post : posts) { %>
 		               <div class="post">
