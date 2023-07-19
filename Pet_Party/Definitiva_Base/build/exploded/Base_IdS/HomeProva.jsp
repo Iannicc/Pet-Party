@@ -7,7 +7,7 @@
 <%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
 <html lang="en">
-  <head>
+<script type="text/javascript" src="scripts/toProfilo.js"></script>  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -45,12 +45,11 @@
 
       <div class="header__right">
         <div class="header__info">
-          <img
-          <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-            class="user__avatar"
+        <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
+          <img class="user__avatar"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
-          />
-          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
+            onclick="gotoProfilo(document.getElementById('curruser'))" />
+          <h4 id="curruser"><%=utenteLoggato.getUsername() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -245,7 +244,9 @@
 
         <!-- post starts -->
         <div class="post">
-		      <% for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
+		      <% 
+          int i=0;
+          for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
 		         <% List<PostAnimale> postVeri = new ArrayList<PostAnimale>(); %>
 		        <% for (Animale  animale : followed.getProfilo().getAnimali()) {
 		        	if (animale.getPosts() != null) {
@@ -259,10 +260,11 @@
 			               <div class="post">
 			               
 			               		<div class="post__top__left">
-			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>"/>
-			               			
+			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
 			               			
 			               		   <div class="post__topInfo">
+			               		   	<h4 id="usr<%=i%>"><%=followed.getUsername()%></h4 >
+			               		   	<h4 id="postId<%=i%>"><%=post.getId()%></h4 >
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
 							         
 							         <p><%= post.getDataCreazione() %></p>
@@ -293,20 +295,22 @@
 			                      </div>
 			                     
 							   <div class="post__options">
-					            <div class="post__option">
+					            <button type="button" class="post__option" onclick="mettiLike(document.getElementById('usr<%=i%>'), document.getElementById('postId<%=i%>'))">
 					              <span class="material-icons"> thumb_up </span>
 					              <p>Like</p>
-					            </div>
+					            </button>
 					
-					            <div class="post__option">
+					            <button type="button" class="post__option">
 					              <span class="material-icons"> chat_bubble_outline </span>
 					              <p>Commenti</p>
-					            </div>
+					            </button>
+
 					
 					          <br>
 					          </div>
 			               </div>
-		        <%     }
+		        <%    i++;
+		        }
 		            }
 		        
 		       %>
@@ -333,5 +337,23 @@
       src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
       nonce="zUxEq08J"
     ></script>
+    
+    
+	    <script>
+		function mettiLike(username, id) {
+			UtenteStandard utentePost = (UtenteStandard) getServletContext.getAttribute(username); 
+			Profilo profUt = utentePost.getProfilo();
+			PostAnimale p;
+			for (Animale a : profUt.getAnimali()){
+				for (PostAnimale po : a.getPosts()){
+					if (po.getId() == id)
+						p=po;
+				}
+			}
+			Like like = new Like(username, po);
+		}
+		</script>
+		
+		
   </body>
 </html>

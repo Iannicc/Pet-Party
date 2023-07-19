@@ -13,13 +13,13 @@
       <head>
          <meta http-equiv="Content-Type" 
             content="text/html; charset=windows-1256">
-         <title>   User Logged Successfully   </title>
+         <title>   User Not Logged Successfully   </title>
       </head>
 	
       <body>
 
          <center>
-            	welcome strunzun!
+            	Credenziali errate!
          </center>
 
       </body>

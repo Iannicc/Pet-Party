@@ -260,22 +260,36 @@ String username = request.getParameter("username");
    
 		     	<%
 		     	UtenteStandard u= (UtenteStandard) getServletContext().getAttribute(username) ;
+		     	Professionista p =null;
+		     	if (u instanceof Professionista)
+		     	{
+		     		p=(Professionista) u;
+		     	}
 		     	%>
 		     	<h1><%=u.getUsername()%></h1>
-		     	<img  src="<%= u.getProfilo().getImage() %>"/>
+		     	<img height="200px" width="200px"  src="<%= u.getProfilo().getImage() %>"/>
 		     	<h3><%= u.getProfilo().getNome() %>  <%= u.getProfilo().getCognome() %></h3>
+		     	<%if (p!=null)
+		     		{%>
+		     		<h4>Dati Professionista: </h4>
+		     		<h4>Professione: <%= p.getProfessione() %></h4>
+		     		<h4>Specializzazione: <%= p.getSpecializzazione() %></h4>
+		     	<%	}
+		     	%>
+		     	
 		     	<%
 		     	int i=0;
 		     	for (Animale a: u.getProfilo().getAnimali())
 		     	{%>
 		     		<div class="animale">
-		     		<img src="<%= a.getImage() %>" onclick="gotoAnimale('<%=username%>',document.getElementById('anim<%=i%>'))"/>
+		     		<img height="auto" width="200px" src="<%= a.getImage() %>" onclick="gotoAnimale('<%=username%>',document.getElementById('anim<%=i%>'))"/>
 		     			
 		     			<h2 id="anim<%=i%>"><%= a.getNome() %></h2>
 		     		</div>
 		     	<%
 		     	i++;
 		     	}
+
 		     	%>
            	
         </div>

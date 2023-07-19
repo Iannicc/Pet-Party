@@ -315,7 +315,7 @@ String username = request.getParameter("username");
 			                      </div>
 			                     
 							   <div class="post__options">
-                                <button type="button" class="postoption">
+                                <button type="button" class="post__option">
                                   <span class="material-icons"> thumb_up </span>
                                   <p>Like</p>
                                 </button>
