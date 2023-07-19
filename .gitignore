@@ -4,3 +4,4 @@ Pet_Party/Definitiva_Base/ant/environment.properties
 Pet_Party/Definitiva_Base/src/it/unibo/tw/web/servlets/LoginServlet.java
 *.war
 *.class
+Pet_Party/Definitiva_Base/src/it/unibo/tw/web/servlets/LoginServlet.java
