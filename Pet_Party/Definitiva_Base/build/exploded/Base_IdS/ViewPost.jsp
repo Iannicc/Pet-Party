@@ -1,34 +1,28 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="it.unibo.tw.web.beans.Post" %>
+<%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
+<%@ page import="it.unibo.tw.web.beans.Animale" %>
+<%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
-   <%@ page language="java" 
-         contentType="text/html; charset=windows-1256"
-         pageEncoding="windows-1256"
-         import="it.unibo.tw.web.beans.UserBean"
-   %>
-   <%@page import="it.unibo.tw.web.beans.UtenteStandard" %>
-   <%@page import="it.unibo.tw.web.beans.ProfiloUtente" %>
-   <%@page import="it.unibo.tw.web.beans.Profilo" %>
-   
-   <%@page import="it.unibo.tw.web.beans.ProfiloProfessionista" %>
-   <%@page import="it.unibo.tw.web.beans.Professionista" %>
-   <%@page import="it.unibo.tw.web.beans.Animale" %>
-   
-   <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
-<script type="text/javascript" src="scripts/toAnimale.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <%
-String username = request.getParameter("username");
-%>
-         <title>   Profilo di <%=username%>   </title>
-    <link rel="stylesheet" href="HomeProva.css" />
+    <title>View Post</title>
+    <link rel="stylesheet" href="ViewPost.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+   
+   <script> 
+    function viewPost(){
+    }
+    </script>
+    
   </head>
-    <body>
+  <body>
     <!-- header starts -->
     <div class="header">
       <div class="header__left">
@@ -256,27 +250,61 @@ String username = request.getParameter("username");
         <!-- post ends -->
 
         <!-- post starts -->
-        <div class="profile" align="center">
+        <div class="createpost" align="center">
    
-		     	<%
-		     	UtenteStandard u= (UtenteStandard) getServletContext().getAttribute(username) ;
+		     	<%PostAnimale post = (PostAnimale) request.getSession().getAttribute("currentPost"); 
+		     	 UtenteStandard utentePost = (UtenteStandard) request.getSession().getAttribute("currentUtentePost");
 		     	%>
-		     	<h1><%=u.getUsername()%></h1>
-		     	<img  src="<%= u.getProfilo().getImage() %>"/>
-		     	<h3><%= u.getProfilo().getNome() %>  <%= u.getProfilo().getCognome() %></h3>
-		     	<%
-		     	int i=0;
-		     	for (Animale a: u.getProfilo().getAnimali())
-		     	{%>
-		     		<div class="animale">
-		     		<img src="<%= a.getImage() %>" onclick="gotoAnimale('<%=username%>',document.getElementById('anim<%=i%>'))"/>
-		     			
-		     			<h2 id="anim<%=i%>"><%= a.getNome() %></h2>
-		     		</div>
-		     	<%
-		     	i++;
-		     	}
-		     	%>
+		     	<div class="post">
+			               
+			               		<div class="post__top__left">
+			               			<img class="user__avatar post__avatar" src="<%=utentePost.getProfilo().getImage()%>"/>
+			               			
+			               			
+			               		   <div class="post__topInfo">
+							         <h3><%= utentePost.getProfilo().getNome() %> <%= utentePost.getProfilo().getCognome() %>  </h3>
+							         
+							         <p><%= post.getDataCreazione() %></p>
+							       </div>
+							    </div>
+							    
+							    
+							   <div class="post__top__right">
+			               			
+			               			<% for (Animale a : post.getAnimali()){%>
+			               				<img class="user__avatar post__avatar" src="<%=a.getImage()%>"/>
+			               			<%}%>
+			               			
+			               		   <div class="post__topInfo">
+							         <% for (Animale a : post.getAnimali()){%>
+			               				<h3> <%=a.getNome()%> </h3>
+			               			<%}%>
+							       </div>
+							    </div>
+							    
+							    
+							     <div class="post__bottom">
+						            <p><%= post.getDescrizione() %></p>
+						         </div>
+						         
+						          <div class="post__image">
+			                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
+			                      </div>
+			                     
+							    <div class="post__options">
+                                <button type="button" class="postoption">
+                                  <span class="material-icons"> thumb_up </span>
+                                  <p>Like</p>
+                                </button>
+
+                                <button type="button" class="post__option">
+                                  <span class="material-icons"> chat_bubble_outline </span>
+                                  <p>Commenti</p>
+                                </button>
+					
+					          <br>
+					          </div>
+			               </div>
            	
         </div>
         <!-- post ends -->
@@ -302,6 +330,4 @@ String username = request.getParameter("username");
       nonce="zUxEq08J"
     ></script>
   </body>
-     
-    
 </html>

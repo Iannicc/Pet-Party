@@ -11,20 +11,21 @@
    <%@page import="it.unibo.tw.web.beans.ProfiloProfessionista" %>
    <%@page import="it.unibo.tw.web.beans.Professionista" %>
    <%@page import="it.unibo.tw.web.beans.Animale" %>
+   <%@page import="it.unibo.tw.web.beans.PostAnimale" %>
+   <%@page import="it.unibo.tw.web.beans.Animale" %>
    
    <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
    "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-<script type="text/javascript" src="scripts/toAnimale.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <%
 String username = request.getParameter("username");
+   String animale = request.getParameter("animale");
 %>
-         <title>   Profilo di <%=username%>   </title>
+         <title>   Profilo di <%=animale%>   </title>
     <link rel="stylesheet" href="HomeProva.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
@@ -259,24 +260,81 @@ String username = request.getParameter("username");
         <div class="profile" align="center">
    
 		     	<%
+		     	
 		     	UtenteStandard u= (UtenteStandard) getServletContext().getAttribute(username) ;
-		     	%>
-		     	<h1><%=u.getUsername()%></h1>
-		     	<img  src="<%= u.getProfilo().getImage() %>"/>
-		     	<h3><%= u.getProfilo().getNome() %>  <%= u.getProfilo().getCognome() %></h3>
-		     	<%
-		     	int i=0;
-		     	for (Animale a: u.getProfilo().getAnimali())
-		     	{%>
-		     		<div class="animale">
-		     		<img src="<%= a.getImage() %>" onclick="gotoAnimale('<%=username%>',document.getElementById('anim<%=i%>'))"/>
-		     			
-		     			<h2 id="anim<%=i%>"><%= a.getNome() %></h2>
-		     		</div>
-		     	<%
-		     	i++;
+		     	Animale toShow =new Animale();
+		     	for (Animale a:u.getProfilo().getAnimali())
+		     	{
+		     		if (animale.equals(a.getNome()))toShow=a;
 		     	}
 		     	%>
+		     	<h1><%=toShow.getNome() %></h1>
+		     	<h2><%=toShow.getDescrizione() %></h2>
+		     	<img  src="<%= toShow.getImage() %>"/>
+		     	<h3>Dati generali:</h3>
+		     	<div>razza: <%= toShow.getRazza() %></div>
+		     	<div>specie: <%= toShow.getSpecie() %></div>
+		     	<div>sesso: <%= toShow.getSex() %></div>
+		     	<%
+		     	for (PostAnimale post : toShow.getPosts()) {
+			        	   %>
+			               <div class="post">
+			               
+			               		<div class="post__top__left">
+			               			<img class="user__avatar post__avatar" src="<%=u.getProfilo().getImage()%>"/>
+			               			
+			               		   <div class="post__topInfo">
+			               		   	<h4 ><%=u.getUsername()%></h4 >
+							         <h3><%= u.getProfilo().getNome() %> <%= u.getProfilo().getCognome() %>  </h3>
+							         
+							         <p><%= post.getDataCreazione() %></p>
+							       </div>
+							    </div>
+							    
+							    
+							   <div class="post__top__right">
+			               			
+			               			<% for (Animale a : post.getAnimali()){%>
+			               				<img class="user__avatar post__avatar" src="<%=a.getImage()%>"/>
+			               			<%}%>
+			               			
+			               		   <div class="post__topInfo">
+							         <% for (Animale a : post.getAnimali()){%>
+			               				<h3> <%=a.getNome()%> </h3>
+			               			<%}%>
+							       </div>
+							    </div>
+							    
+							    
+							     <div class="post__bottom">
+						            <p><%= post.getDescrizione() %></p>
+						         </div>
+						         
+						          <div class="post__image">
+			                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
+			                      </div>
+			                     
+							   <div class="post__options">
+                                <button type="button" class="postoption">
+                                  <span class="material-icons"> thumb_up </span>
+                                  <p>Like</p>
+                                </button>
+
+                                <button type="button" class="post__option">
+                                  <span class="material-icons"> chat_bubble_outline </span>
+                                  <p>Commenti</p>
+                                </button>
+
+                              <br>
+                              </div>
+					
+					          <br>
+					          </div>
+			               
+		        <%    
+		        }
+           	%>
+           	</div>
            	
         </div>
         <!-- post ends -->

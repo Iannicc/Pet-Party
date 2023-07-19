@@ -269,7 +269,8 @@ String username = request.getParameter("username");
 		     	for (Animale a: u.getProfilo().getAnimali())
 		     	{%>
 		     		<div class="animale">
-		     			<img src="<%=a.getImage()%> onclick="gotoAnimale(<%=u.getUsername() %>,document.getElementById('anim<%=i%>')">
+		     		<img src="<%= a.getImage() %>" onclick="gotoAnimale('<%=username%>',document.getElementById('anim<%=i%>'))"/>
+		     			
 		     			<h2 id="anim<%=i%>"><%= a.getNome() %></h2>
 		     		</div>
 		     	<%
