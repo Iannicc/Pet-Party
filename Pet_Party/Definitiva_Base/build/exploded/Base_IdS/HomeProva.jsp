@@ -263,8 +263,8 @@
 			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
 			               			
 			               		   <div class="post__topInfo">
-			               		   	<h4 id="usr<%=i%>"><%=followed.getUsername()%></h4 >
-			               		   	<h4 id="postId<%=i%>"><%=post.getId()%></h4 >
+			               		   	<p  style="display:none;" class="hidden" id="usr<%=i%>"><%=followed.getUsername()%></p >
+			               		   	<p  style="display:none;" class="hidden" id="postId<%=i%>"><%=post.getId()%></p >
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
 							         
 							         <p><%= post.getDataCreazione() %></p>
@@ -338,21 +338,6 @@
       nonce="zUxEq08J"
     ></script>
     
-    
-	    <script>
-		function mettiLike(username, id) {
-			UtenteStandard utentePost = (UtenteStandard) getServletContext.getAttribute(username); 
-			Profilo profUt = utentePost.getProfilo();
-			PostAnimale p;
-			for (Animale a : profUt.getAnimali()){
-				for (PostAnimale po : a.getPosts()){
-					if (po.getId() == id)
-						p=po;
-				}
-			}
-			Like like = new Like(username, po);
-		}
-		</script>
 		
 		
   </body>
