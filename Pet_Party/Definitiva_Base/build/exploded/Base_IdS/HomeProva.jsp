@@ -30,10 +30,15 @@
       </div>
 
       <div class="header__middle">
+      
+        <div class="header__option active">
+          <span class="material-icons"> home </span>
+        </div>
         
         <div class="header__option">
           <span class="material-icons"> add_circle </span>
         </div>
+        
       </div>
 
       <div class="header__right">
