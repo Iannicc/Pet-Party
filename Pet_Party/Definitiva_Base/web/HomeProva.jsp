@@ -293,15 +293,18 @@
 			                      </div>
 			                     
 							   <div class="post__options">
-					            <div class="post__option">
-					              <span class="material-icons"> thumb_up </span>
-					              <p>Like</p>
-					            </div>
-					
-					            <div class="post__option">
-					              <span class="material-icons"> chat_bubble_outline </span>
-					              <p>Commenti</p>
-					            </div>
+                                <button type="button" class="postoption">
+                                  <span class="material-icons"> thumb_up </span>
+                                  <p>Like</p>
+                                </button>
+
+                                <button type="button" class="post__option">
+                                  <span class="material-icons"> chat_bubble_outline </span>
+                                  <p>Commenti</p>
+                                </button>
+
+                              <br>
+                              </div>
 					
 					          <br>
 					          </div>

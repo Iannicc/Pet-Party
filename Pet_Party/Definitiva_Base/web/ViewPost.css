@@ -406,3 +406,9 @@ font-family: 'Roboto';
     padding: 10px 50px;
   }
 }
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}

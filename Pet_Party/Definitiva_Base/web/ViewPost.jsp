@@ -11,9 +11,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crea nuovo Post</title>
-    <link rel="stylesheet" href="HomeProva.css" />
+    <title>View Post</title>
+    <link rel="stylesheet" href="ViewPost.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    
+   
+   <script> 
+    function viewPost(){
+    }
+    </script>
+    
   </head>
   <body>
     <!-- header starts -->
@@ -245,36 +252,59 @@
         <!-- post starts -->
         <div class="createpost" align="center">
    
-		     	<form method="POST" action="postServlet" enctype='multipart/form-data'>
-           	<div class="form-group">
-        		<label for="media">Media</label>
-        		<input type="file" id="media" name="media" required>
-      		</div>
-      		<br>
-     		 <div class="form-group">
-        		<label for="descrizione">descrizione</label><br>
-        		<textarea id="descrizione" name="descrizione" rows="6" cols="50">
-        		</textarea>
-      		</div>
-      		<br>
-      		<h4>Animali presenti nel post</h4><br><br>
-      		<%
-      		UtenteStandard u = (UtenteStandard) session.getAttribute("currentSessionUser");
-      		for(Animale a: u.getProfilo().getAnimali())
-      		{
-      			%>
-      			<div class="form-group">
-        		<label for="password"><%=a.getNome() %></label>
-        		<input type="checkbox" name="checkbox" value=<%= a.getNome() %>>
-      			</div>
-      			<%
-      		}
-      		%>
-      		<div>
-      		<br>
-  			<button  type="submit" class="material-icons">upload</button>
-  			</div>
-           	</form>
+		     	<%PostAnimale post = (PostAnimale) request.getSession().getAttribute("currentPost"); 
+		     	 UtenteStandard utentePost = (UtenteStandard) request.getSession().getAttribute("currentUtentePost");
+		     	%>
+		     	<div class="post">
+			               
+			               		<div class="post__top__left">
+			               			<img class="user__avatar post__avatar" src="<%=utentePost.getProfilo().getImage()%>"/>
+			               			
+			               			
+			               		   <div class="post__topInfo">
+							         <h3><%= utentePost.getProfilo().getNome() %> <%= utentePost.getProfilo().getCognome() %>  </h3>
+							         
+							         <p><%= post.getDataCreazione() %></p>
+							       </div>
+							    </div>
+							    
+							    
+							   <div class="post__top__right">
+			               			
+			               			<% for (Animale a : post.getAnimali()){%>
+			               				<img class="user__avatar post__avatar" src="<%=a.getImage()%>"/>
+			               			<%}%>
+			               			
+			               		   <div class="post__topInfo">
+							         <% for (Animale a : post.getAnimali()){%>
+			               				<h3> <%=a.getNome()%> </h3>
+			               			<%}%>
+							       </div>
+							    </div>
+							    
+							    
+							     <div class="post__bottom">
+						            <p><%= post.getDescrizione() %></p>
+						         </div>
+						         
+						          <div class="post__image">
+			                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
+			                      </div>
+			                     
+							    <div class="post__options">
+                                <button type="button" class="postoption">
+                                  <span class="material-icons"> thumb_up </span>
+                                  <p>Like</p>
+                                </button>
+
+                                <button type="button" class="post__option">
+                                  <span class="material-icons"> chat_bubble_outline </span>
+                                  <p>Commenti</p>
+                                </button>
+					
+					          <br>
+					          </div>
+			               </div>
            	
         </div>
         <!-- post ends -->
