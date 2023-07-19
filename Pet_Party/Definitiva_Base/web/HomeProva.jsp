@@ -25,7 +25,7 @@
         />
         <div class="header__input">
           <span class="material-icons"> search </span>
-          <input type="text" placeholder="Cerca......." />
+          <input type="text" placeholder="Cerca..." />
         </div>
       </div>
 
@@ -33,6 +33,7 @@
         
         <div class="header__option">
           <span class="material-icons"> add_circle </span>
+        
         </div>
       </div>
 
@@ -43,7 +44,7 @@
             class="user__avatar"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
           />
-          <h4><%=utenteLoggato.getUsername() %></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -247,7 +248,7 @@
 			               		<div class="post__top">
 			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>"/>
 			               		   <div class="post__topInfo">
-							         <h3><%= followed.getUsername() %> <%= followed.getProfilo().getCognome() %>  </h3>
+							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
 							         <p><%= post.getDataCreazione() %></p>
 							       </div>
 							    </div>

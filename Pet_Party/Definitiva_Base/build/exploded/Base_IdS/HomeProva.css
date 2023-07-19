@@ -48,6 +48,7 @@
   display: flex;
   flex: 1;
   justify-content: center;
+  align-items: center;
 }
 
 .header__option .material-icons {
