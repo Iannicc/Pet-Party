@@ -101,7 +101,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	            }
 	            this.getServletContext().setAttribute(user.getUsername(),user );
 	            session.setAttribute("currentSessionUser", user);
-	            request.getRequestDispatcher("TestPostCreato.jsp").forward(request, response);
+	            request.getRequestDispatcher("HomeProva.jsp").forward(request, response);
 		}
 
 	        catch (Throwable theException)
