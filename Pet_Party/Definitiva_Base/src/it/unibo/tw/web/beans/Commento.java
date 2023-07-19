@@ -12,7 +12,7 @@ public class Commento implements ISegnalabile {
 	public void setContenuto(String contenuto) {
 		this.contenuto = contenuto;
 	}
-	
+
 	public Commento() {
 		super();
 	}
@@ -34,7 +34,7 @@ public class Commento implements ISegnalabile {
 		this.dataCreazione = dataCreazione;
 		this.usernameCreatore = usernameCreatore;
 	}
-	
-	
+
+
 
 }

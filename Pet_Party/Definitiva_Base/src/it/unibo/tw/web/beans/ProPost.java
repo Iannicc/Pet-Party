@@ -7,8 +7,8 @@ import java.util.Set;
 
 public class ProPost extends Post
 {
-	
-	
+
+
 	public ProPost()
 	{
 		super();

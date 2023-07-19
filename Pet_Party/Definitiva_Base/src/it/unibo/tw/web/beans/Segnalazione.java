@@ -2,7 +2,7 @@ package it.unibo.tw.web.beans;
 
 import java.sql.Date;
 
-public class Segnalazione 
+public class Segnalazione
 {
 	private Date timeStamp;
 	private int Id;
@@ -34,7 +34,7 @@ public class Segnalazione
 		Id = id;
 		this.motivo = motivo;
 	}
-	
-	
-	
+
+
+
 }

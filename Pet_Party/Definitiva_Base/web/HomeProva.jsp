@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashSet" %>
 <%@ page import="it.unibo.tw.web.beans.Post" %>
 <%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
 <%@ page import="it.unibo.tw.web.beans.Animale" %>
@@ -34,12 +35,12 @@
         <div class="header__option active">
           <span class="material-icons"> home </span>
         </div>
-        
+            
         <div class="header__option">
-          <span class="material-icons"> add_circle </span>
-        
+        	<a href="NewPost.jsp" class="material-icons"> add_circle </a>
         </div>
-        
+       
+       
       </div>
 
       <div class="header__right">
@@ -245,23 +246,46 @@
         <!-- post starts -->
         <div class="post">
 		      <% 
-		      int i=0;
-		      for (UtenteStandard  followed : utenteLoggato.getFollowed()) { 
-		      %>
+          int i=0;
+          for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
+		         <% List<PostAnimale> postVeri = new ArrayList<PostAnimale>(); %>
 		        <% for (Animale  animale : followed.getProfilo().getAnimali()) {
 		        	if (animale.getPosts() != null) {
-		        	  for (PostAnimale post : animale.getPosts()) {
-		        		  
+		        		postVeri.addAll(animale.getPosts());
+		        	}
+		        }
+		        List<PostAnimale> listWithoutDuplicates = new ArrayList<>(
+		        	      new HashSet<>(postVeri));
+		        	  for (PostAnimale post : listWithoutDuplicates) {
 			        	   %>
 			               <div class="post">
-			               		<div class="post__top">
-			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>"  onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
+			               
+			               		<div class="post__top__left">
+			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
+			               			
 			               		   <div class="post__topInfo">
 			               		   	<h4 id="usr<%=i%>"><%=followed.getUsername()%></h4 >
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
+							         
 							         <p><%= post.getDataCreazione() %></p>
 							       </div>
 							    </div>
+							    
+							    
+							   <div class="post__top__right">
+			               			
+			               			<% for (Animale a : post.getAnimali()){%>
+			               				<img class="user__avatar post__avatar" src="<%=a.getImage()%>"/>
+			               			<%}%>
+			               			
+			               		   <div class="post__topInfo">
+							         <% for (Animale a : post.getAnimali()){%>
+			               				<h3> <%=a.getNome()%> </h3>
+			               			<%}%>
+							       </div>
+							    </div>
+							    
+							    
 							     <div class="post__bottom">
 						            <p><%= post.getDescrizione() %></p>
 						         </div>
@@ -271,15 +295,18 @@
 			                      </div>
 			                     
 							   <div class="post__options">
-					            <div class="post__option">
-					              <span class="material-icons"> thumb_up </span>
-					              <p>Like</p>
-					            </div>
-					
-					            <div class="post__option">
-					              <span class="material-icons"> chat_bubble_outline </span>
-					              <p>Commenti</p>
-					            </div>
+                                <button type="button" class="postoption">
+                                  <span class="material-icons"> thumb_up </span>
+                                  <p>Like</p>
+                                </button>
+
+                                <button type="button" class="post__option">
+                                  <span class="material-icons"> chat_bubble_outline </span>
+                                  <p>Commenti</p>
+                                </button>
+
+                              <br>
+                              </div>
 					
 					          <br>
 					          </div>
@@ -287,8 +314,8 @@
 		        <%    i++;
 		        }
 		            }
-		        }
-		      } %>
+		        
+		       %>
         </div>
         <!-- post ends -->
 

@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class PostAnimale extends Post 
+public class PostAnimale extends Post
 {
-	Set <Animale> animali = new TreeSet<Animale>();
-	
+	Set <Animale> animali = new TreeSet<>();
+
 	public Set<Animale> getAnimali() {
 		return animali;
 	}
@@ -22,7 +22,7 @@ public class PostAnimale extends Post
 	{
 		super();
 	}
-	
+
 	public PostAnimale(Date dataCreazione, BufferedImage media, String descrizione, List<Commento> commenti, Set<Like> likes , Set<Animale> animali) {
 		super(dataCreazione,media,descrizione,commenti,likes);
 		this.animali=animali;

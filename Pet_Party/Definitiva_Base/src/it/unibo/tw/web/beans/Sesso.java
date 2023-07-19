@@ -1,6 +1,6 @@
 package it.unibo.tw.web.beans;
 
-public enum Sesso 
+public enum Sesso
 {
 	Maschio,
 	Femmina;

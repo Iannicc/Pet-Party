@@ -13,7 +13,7 @@ public class StillAServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private String homeURL = null;
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -33,5 +33,5 @@ public class StillAServlet extends HttpServlet {
 		// un altro forward eseguito lato servlet
 		req.getRequestDispatcher(homeURL).forward(req, resp);
 	}
-	
+
 }

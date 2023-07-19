@@ -1,10 +1,11 @@
 package it.unibo.tw.web.beans;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Log 
+public class Log
 {
-	private List<VoceDiLog> voci = new ArrayList<VoceDiLog>();
+	private List<VoceDiLog> voci = new ArrayList<>();
 
 	public List<VoceDiLog> getVoci() {
 		return voci;
@@ -17,7 +18,7 @@ public class Log
 	public Log() {
 		super();
 	}
-	
+
 	public void addVoce(VoceDiLog vdl)
 	{
 		this.voci.add(vdl);
@@ -27,7 +28,7 @@ public class Log
 		super();
 		this.voci = voci;
 	}
-	
-	
-	
+
+
+
 }

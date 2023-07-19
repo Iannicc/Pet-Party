@@ -1,8 +1,6 @@
 package it.unibo.tw.web.beans;
 
-import java.sql.Blob;
-
-public abstract class Profilo 
+public abstract class Profilo
 {
 	private String nome;
 	private String descrizione;
@@ -34,7 +32,7 @@ public abstract class Profilo
 		this.descrizione = descrizione;
 		this.image = image;
 	}
-	
-	
-	
+
+
+
 }

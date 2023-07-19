@@ -1,17 +1,17 @@
 package it.unibo.tw.web.beans;
 
-import java.sql.Blob;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Animale extends Profilo 
+public class Animale extends Profilo
 {
 	private String razza;
 	private String specie;
 	private Sesso sex;
-	private List<PostAnimale> posts=new ArrayList<PostAnimale>();
-	
-	
-	
+	private List<PostAnimale> posts=new ArrayList<>();
+
+
+
 	public Animale(String nome, String descrizione, String immagine,String razza, String specie, Sesso sex, List<PostAnimale> posts) {
 		super(nome,descrizione,immagine);
 		this.razza = razza;
@@ -46,15 +46,15 @@ public class Animale extends Profilo
 	public Animale() {
 		super();
 	}
-	
+
 	public boolean condividiPost(PostAnimale p)
 	{
 		return this.posts.add(p);
 	}
-	
+
 	public boolean rimuoviPost(PostAnimale p)
 	{
 		return this.posts.add(p);
 	}
-	
+
 }
