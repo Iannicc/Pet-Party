@@ -9,12 +9,14 @@ import java.util.TreeSet;
 
 public abstract class Post implements ISegnalabile {
 
+	private static int GID = 0;
 	private Date dataCreazione;
 	private BufferedImage media;
 	private String descrizione;
 	private List<Commento> commenti= new ArrayList<>();
 	private Set<Like>likes = new TreeSet<>();
 	protected String base64;
+	private int id;
 
 	public Date getDataCreazione() {
 		return dataCreazione;
@@ -24,6 +26,8 @@ public abstract class Post implements ISegnalabile {
 	}
 	public Post() {
 		super();
+		this.setId(Post.GID++);
+		Post.GID = Post.GID ++;
 	}
 	public BufferedImage getMedia() {
 		return media;
@@ -78,6 +82,7 @@ public abstract class Post implements ISegnalabile {
 		this.descrizione = descrizione;
 		this.commenti = commenti;
 		this.likes = likes;
+		
 	}
 
 	public Post(Date dataCreazione, BufferedImage media, String descrizione, List<Commento> commenti,
@@ -97,6 +102,12 @@ public abstract class Post implements ISegnalabile {
 	}
 	public void setBase64(String base64) {
 		this.base64 = base64;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 
