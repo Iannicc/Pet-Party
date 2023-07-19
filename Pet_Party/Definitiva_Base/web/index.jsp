@@ -15,10 +15,7 @@
       This message avoid letting the user linger without knowing what's going on.
       -->
  
-      <p>
-      	Please wait for the web application to start... &nbsp;
-		<img alt="wait" title="wait" src="images/wait.gif"/>
-      </p>
+     
 
    </body>
 </html>

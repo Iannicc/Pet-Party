@@ -16,12 +16,14 @@
 		<servlet-name>HomeFeed</servlet-name>
 		<servlet-class>it.unibo.tw.web.servlets.HomeFeed</servlet-class>
 	</servlet>
-
 	
+
 	<servlet-mapping>
 		<servlet-name>HomeFeed</servlet-name>
 		<url-pattern>/HomeFeed</url-pattern>
 	</servlet-mapping>
+	
+	
 	
 	<servlet>
 
