@@ -265,6 +265,7 @@
 			               			
 			               		   <div class="post__topInfo">
 			               		   	<h4 id="usr<%=i%>"><%=followed.getUsername()%></h4 >
+			               		   	<h4 id="postId<%=i%>"><%=post.getId()%></h4 >
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
 							         
 							         <p><%= post.getDataCreazione() %></p>
@@ -295,7 +296,7 @@
 			                      </div>
 			                     
 							   <div class="post__options">
-					            <button type="button" class="post__option" onclick="">
+					            <button type="button" class="post__option" onclick="mettiLike(document.getElementById('usr<%=i%>'), document.getElementById('postId<%=i%>'))">
 					              <span class="material-icons"> thumb_up </span>
 					              <p>Like</p>
 					            </button>
@@ -337,5 +338,23 @@
       src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
       nonce="zUxEq08J"
     ></script>
+    
+    
+	    <script>
+		function mettiLike(username, id) {
+			UtenteStandard utentePost = (UtenteStandard) getServletContext.getAttribute(username); 
+			Profilo profUt = utentePost.getProfilo();
+			PostAnimale p;
+			for (Animale a : profUt.getAnimali()){
+				for (PostAnimale po : a.getPosts()){
+					if (po.getId() == id)
+						p=po;
+				}
+			}
+			Like like = new Like(username, po);
+		}
+		</script>
+		
+		
   </body>
 </html>
