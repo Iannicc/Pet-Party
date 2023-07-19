@@ -7,7 +7,7 @@
 <%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
 <html lang="en">
-  <head>
+<script type="text/javascript" src="scripts/toProfilo.js"></script>  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -245,7 +245,9 @@
 
         <!-- post starts -->
         <div class="post">
-		      <% for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
+		      <% 
+          int i=0;
+          for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
 		         <% List<PostAnimale> postVeri = new ArrayList<PostAnimale>(); %>
 		        <% for (Animale  animale : followed.getProfilo().getAnimali()) {
 		        	if (animale.getPosts() != null) {
@@ -259,10 +261,10 @@
 			               <div class="post">
 			               
 			               		<div class="post__top__left">
-			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>"/>
-			               			
+			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
 			               			
 			               		   <div class="post__topInfo">
+			               		   	<h4 id="usr<%=i%>"><%=followed.getUsername()%></h4 >
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
 							         
 							         <p><%= post.getDataCreazione() %></p>
@@ -302,11 +304,13 @@
 					              <span class="material-icons"> chat_bubble_outline </span>
 					              <p>Commenti</p>
 					            </button>
+
 					
 					          <br>
 					          </div>
 			               </div>
-		        <%     }
+		        <%    i++;
+		        }
 		            }
 		        
 		       %>

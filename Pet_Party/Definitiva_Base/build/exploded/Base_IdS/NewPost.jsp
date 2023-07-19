@@ -250,11 +250,14 @@
         		<label for="media">Media</label>
         		<input type="file" id="media" name="media" required>
       		</div>
+      		<br>
      		 <div class="form-group">
-        		<label for="descrizione">descrizione</label>
-        		<input type="text" id="descrizione" name="descrizione">
+        		<label for="descrizione">descrizione</label><br>
+        		<textarea id="descrizione" name="descrizione" rows="6" cols="50">
+        		</textarea>
       		</div>
-      		<h4>Animali presenti nel post</h4>
+      		<br>
+      		<h4>Animali presenti nel post</h4><br><br>
       		<%
       		UtenteStandard u = (UtenteStandard) session.getAttribute("currentSessionUser");
       		for(Animale a: u.getProfilo().getAnimali())
@@ -267,10 +270,12 @@
       			<%
       		}
       		%>
-      		<div class="button-container">
-  			<button type="submit">Pubblica</button>
+      		<div>
+      		<br>
+  			<button  type="submit" class="material-icons">upload</button>
+  			</div>
            	</form>
-           	</div>
+           	
         </div>
         <!-- post ends -->
 
