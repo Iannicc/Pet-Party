@@ -2,7 +2,6 @@ package it.unibo.tw.web.servlets;
 
 import java.io.InputStream;
 import java.sql.Date;
-import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
@@ -58,10 +57,9 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	        ServletFileUpload upload = new ServletFileUpload(factory);
 
 	        try {
-
-	            String[] selected = request.getParameterValues("checkbox");
 	            // Analizza la richiesta per ottenere i FileItem
 	            List<FileItem> items = upload.parseRequest(request);
+	            //String[] selected = request.getParameterValues("checkbox");
 	            // Itera attraverso i FileItem
 	            Set<Animale> raffigurati= new HashSet<>();
 	            for (FileItem item : items) {
@@ -76,7 +74,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 
 	                    	for (Animale a : user.getProfilo().getAnimali())
 	                    	{
-	                    		if( Arrays.stream(selected).anyMatch(a.getNome()::equals))
+	                    		if(fieldValue.equals(a.getNome()))
 	                    		{
 	                    			raffigurati.add(a);
 	                    		}
@@ -88,13 +86,18 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	                    InputStream imageStream = item.getInputStream();
 	                    byte[] imageBytes = imageStream.readAllBytes();
 	                    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-	                    p.setBase64(base64Image);
+	                    String mimeType = "image/jpeg"; // Modifica il tipo MIME in base al formato dell'immagine
+	          	        String urlBase64 = "data:" + mimeType + ";base64," + base64Image;
+	                    p.setBase64(urlBase64);
 	                }
 	            }
 	            p.setAnimali(raffigurati);
 	            for(Animale a: raffigurati)
 	            {
 	            	a.condividiPost(p);
+	            }
+	            if (raffigurati.isEmpty()) {
+	            	user.setUsername("caltanissetta");
 	            }
 	            this.getServletContext().setAttribute(user.getUsername(),user );
 	            session.setAttribute("currentSessionUser", user);
