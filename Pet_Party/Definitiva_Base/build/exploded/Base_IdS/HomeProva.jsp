@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashSet" %>
 <%@ page import="it.unibo.tw.web.beans.Post" %>
 <%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
 <%@ page import="it.unibo.tw.web.beans.Animale" %>
@@ -245,18 +246,44 @@
         <!-- post starts -->
         <div class="post">
 		      <% for (UtenteStandard  followed : utenteLoggato.getFollowed()) { %>
+		         <% List<PostAnimale> postVeri = new ArrayList<PostAnimale>(); %>
 		        <% for (Animale  animale : followed.getProfilo().getAnimali()) {
 		        	if (animale.getPosts() != null) {
-		        	  for (PostAnimale post : animale.getPosts()) {
+		        		postVeri.addAll(animale.getPosts());
+		        	}
+		        }
+		        List<PostAnimale> listWithoutDuplicates = new ArrayList<>(
+		        	      new HashSet<>(postVeri));
+		        	  for (PostAnimale post : listWithoutDuplicates) {
 			        	   %>
 			               <div class="post">
-			               		<div class="post__top">
+			               
+			               		<div class="post__top__left">
 			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>"/>
+			               			
+			               			
 			               		   <div class="post__topInfo">
 							         <h3><%= followed.getProfilo().getNome() %> <%= followed.getProfilo().getCognome() %>  </h3>
+							         
 							         <p><%= post.getDataCreazione() %></p>
 							       </div>
 							    </div>
+							    
+							    
+							   <div class="post__top__right">
+			               			
+			               			<% for (Animale a : post.getAnimali()){%>
+			               				<img class="user__avatar post__avatar" src="<%=a.getImage()%>"/>
+			               			<%}%>
+			               			
+			               		   <div class="post__topInfo">
+							         <% for (Animale a : post.getAnimali()){%>
+			               				<h3> <%=a.getNome()%> </h3>
+			               			<%}%>
+							       </div>
+							    </div>
+							    
+							    
 							     <div class="post__bottom">
 						            <p><%= post.getDescrizione() %></p>
 						         </div>
@@ -281,8 +308,8 @@
 			               </div>
 		        <%     }
 		            }
-		        }
-		      } %>
+		        
+		       %>
         </div>
         <!-- post ends -->
 

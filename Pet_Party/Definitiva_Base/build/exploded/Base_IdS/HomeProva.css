@@ -274,11 +274,19 @@ body {
   padding-left: 22%;
 }
 
-.post__top {
+.post__top__left {
   display: flex;
   position: relative;
   align-items: center;
   padding: 15px;
+}
+
+.post__top__right {
+  display: flex;
+  position: relative;
+  align-items: center;
+    padding: 15px;
+
 }
 
 .post__avatar {
