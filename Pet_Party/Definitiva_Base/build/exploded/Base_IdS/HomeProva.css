@@ -1,6 +1,15 @@
+
 textarea {
   resize: none;
 }
+
+button{
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -405,4 +414,10 @@ font-family: 'Roboto';
     width: 50%;
     padding: 10px 50px;
   }
+}
+button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
 }

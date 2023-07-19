@@ -45,12 +45,11 @@
 
       <div class="header__right">
         <div class="header__info">
-          <img
-          <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-            class="user__avatar"
+        <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
+          <img class="user__avatar"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
-          />
-          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
+            onclick="gotoProfilo(document.getElementById('curruser'))" />
+          <h4 id="curruser"><%=utenteLoggato.getUsername() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
