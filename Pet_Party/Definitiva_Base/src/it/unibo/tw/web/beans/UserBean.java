@@ -1,14 +1,14 @@
 package it.unibo.tw.web.beans;
 
 public class UserBean {
-	
+
     private String username;
     private String password;
     private String firstName;
     private String lastName;
     public boolean valid;
-	
-	
+
+
     public String getFirstName() {
        return firstName;
 	}
@@ -17,7 +17,7 @@ public class UserBean {
        firstName = newFirstName;
 	}
 
-	
+
     public String getLastName() {
        return lastName;
 			}
@@ -25,7 +25,7 @@ public class UserBean {
     public void setLastName(String newLastName) {
        lastName = newLastName;
 			}
-			
+
 
     public String getPassword() {
        return password;
@@ -34,8 +34,8 @@ public class UserBean {
     public void setPassword(String newPassword) {
        password = newPassword;
 	}
-	
-			
+
+
     public String getUsername() {
        return username;
 			}
@@ -44,12 +44,12 @@ public class UserBean {
        username = newUsername;
 			}
 
-				
+
     public boolean isValid() {
        return valid;
 	}
 
     public void setValid(boolean newValid) {
        valid = newValid;
-	}	
+	}
 }

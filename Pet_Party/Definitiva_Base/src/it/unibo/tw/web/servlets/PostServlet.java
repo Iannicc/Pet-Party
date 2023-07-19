@@ -2,6 +2,7 @@ package it.unibo.tw.web.servlets;
 
 import java.io.InputStream;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
@@ -25,25 +26,26 @@ import it.unibo.tw.web.beans.UtenteStandard;
 public class PostServlet extends HttpServlet {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-public void doPost(HttpServletRequest request, HttpServletResponse response) 
+@Override
+public void doPost(HttpServletRequest request, HttpServletResponse response)
 	           throws ServletException, java.io.IOException {
 
 
 
 	try
-	{	 
+	{
 		HttpSession session = request.getSession();
 		boolean isPro=false;
 		UtenteStandard user = (UtenteStandard) session.getAttribute("currentSessionUser");
 		if (isPro)
 		{
-			
+
 		}
-		else 
+		else
 		{
 			PostAnimale p= new PostAnimale();
 			java.util.Date curr= new java.util.Date();
@@ -56,35 +58,37 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	        ServletFileUpload upload = new ServletFileUpload(factory);
 
 	        try {
+
+	            String[] selected = request.getParameterValues("checkbox");
 	            // Analizza la richiesta per ottenere i FileItem
 	            List<FileItem> items = upload.parseRequest(request);
-
 	            // Itera attraverso i FileItem
-	            Set<Animale> raffigurati= new HashSet<Animale>();
+	            Set<Animale> raffigurati= new HashSet<>();
 	            for (FileItem item : items) {
 	                // Verifica se l'elemento è un campo di input o un file
 	                if (item.isFormField()) {
 	                    // Campo di input (non un file)
 	                    String fieldName = item.getFieldName();
 	                    String fieldValue = item.getString();
-	                    if (fieldName.equals("descrizione"))p.setDescrizione(fieldValue);
+	                    if (fieldName.equals("descrizione")) p.setDescrizione(fieldValue);
 	                    else
 	                    {
-	                    	
+
 	                    	for (Animale a : user.getProfilo().getAnimali())
 	                    	{
-	                    		if(fieldName.equals(a.getNome()))
+	                    		if( Arrays.stream(selected).anyMatch(a.getNome()::equals))
 	                    		{
 	                    			raffigurati.add(a);
 	                    		}
 	                    	}
 	                    }
-	                } else {
+	                } 
+	                else {
 	                    // File (immagine)
 	                    InputStream imageStream = item.getInputStream();
 	                    byte[] imageBytes = imageStream.readAllBytes();
 	                    String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-	                   p.setBase64(base64Image);
+	                    p.setBase64(base64Image);
 	                }
 	            }
 	            p.setAnimali(raffigurati);
@@ -92,22 +96,21 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	            {
 	            	a.condividiPost(p);
 	            }
-	            getServletContext().setAttribute(user.getUsername(),user );
+	            this.getServletContext().setAttribute(user.getUsername(),user );
+	            session.setAttribute("currentSessionUser", user);
+	            request.getRequestDispatcher("TestPostCreato.jsp").forward(request, response);
 		}
 
-	        catch (Throwable theException) 	    
+	        catch (Throwable theException)
 	        {
-	        	System.out.println(theException); 
+	        	System.out.println(theException);
 	        }
 		}
 	}
-	catch(Throwable theException) 	    
+	catch(Throwable theException)
 	{
-	
+
 	}
 
 }
 }
-
-
-

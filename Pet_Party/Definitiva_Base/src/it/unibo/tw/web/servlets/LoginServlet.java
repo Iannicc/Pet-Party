@@ -35,8 +35,9 @@ import it.unibo.tw.web.beans.UtenteStandard;
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
-	
+
+
+	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		List<UtenteStandard> followers1 = new ArrayList<>();
@@ -74,19 +75,19 @@ public class LoginServlet extends HttpServlet {
 		utente3.setFollowers(followers3);
 		utente3.setProfessione("Dogsitter");
 		utente3.setSpecializzazione("Chihuahua");
-		String pathDogGiorgio="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiorgio.jpg";
-		String pathCatImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\catDavide.jpeg"; 
-		String pathDogImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiacomo.jpeg"; 
+		String pathDogGiorgio="C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiorgio.jpg";
+		String pathCatImage= "C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\catDavide.jpeg";
+		String pathDogImage= "C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiacomo.jpeg";
 		String dog2Base64 = convertImage(pathDogGiorgio);
-		String catBase64 = convertImage(pathCatImage); 
+		String catBase64 = convertImage(pathCatImage);
 		String dogBase64 = convertImage(pathDogImage);
-		String pathGiorgio = "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giorgio.jpeg";
-		String pathDavide ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\davide.jpg"; 
-		String pathGiacomo ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giacomo.jpeg"; 
+		String pathGiorgio = "C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giorgio.jpeg";
+		String pathDavide ="C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\davide.jpg";
+		String pathGiacomo ="C:\\Users\\giorg\\OneDrive - Alma Mater Studiorum Università di Bologna\\Desktop\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giacomo.jpeg";
 		String davideBase64 =convertImage(pathDavide);
 		String giacomoBase64 =convertImage(pathGiacomo);
 		String giorgioBase64 = convertImage(pathGiorgio);
-		
+
         ProfiloUtente pu1= new ProfiloUtente();
         ProfiloUtente pu2= new ProfiloUtente();
         ProfiloProfessionista pu3 = new ProfiloProfessionista();
@@ -167,12 +168,12 @@ public class LoginServlet extends HttpServlet {
         utente2.setProfilo(pu2);
         utente3.setProfilo(pu3);
         utente1.setProfilo(pu1);
-        
+
 	this.getServletContext().setAttribute(utente1.getUsername(), utente1);
 	this.getServletContext().setAttribute(utente2.getUsername(), utente2);
 	this.getServletContext().setAttribute(utente3.getUsername(), utente3);
-	
-	
+
+
 }
 private String convertImage(String path) {
 		File imageFile = new File(path);
@@ -190,53 +191,54 @@ private String convertImage(String path) {
 	      return urlBase64;
 	}
 
-	
-public void doPost(HttpServletRequest request, HttpServletResponse response) 
+
+@Override
+public void doPost(HttpServletRequest request, HttpServletResponse response)
 			           throws ServletException, java.io.IOException {
-	
+
 	UtenteStandard u1 = (UtenteStandard) this.getServletContext().getAttribute("davide");
 	UtenteStandard u2 = (UtenteStandard) this.getServletContext().getAttribute("giacomo");
 	Professionista u3 = (Professionista) this.getServletContext().getAttribute("giorgio");
 
 try
-{	 
+{
      String username = request.getParameter("username");
      String password = request.getParameter("password");
      String contextPath = request.getContextPath();
-	   		    
+
      //if (user.isValid())
 	if (u1.getUsername().compareTo(username)==0 && u1.getPassword().compareTo(password)==0)
      {
-	        
+
           HttpSession session = request.getSession();
-          session.setAttribute("currentSessionUser",u1); 
+          session.setAttribute("currentSessionUser",u1);
           //this.getServletContext().getRequestDispatcher("/homeProva.jsp").forward(request, response);
           response.sendRedirect(request.getContextPath() + "/HomeFeed");
      }
-	        
+
      else if (u2.getUsername().compareTo(username)==0 && u2.getPassword().compareTo(password)==0)
      {
-	        
-         HttpSession session = request.getSession();	    
-         session.setAttribute("currentSessionUser",u2); 
+
+         HttpSession session = request.getSession();
+         session.setAttribute("currentSessionUser",u2);
          response.sendRedirect(request.getContextPath() + "/HomeFeed");
     }
      else if (u3.getUsername().compareTo(username)==0 && u3.getPassword().compareTo(password)==0)
      {
-	        
-         HttpSession session = request.getSession();	    
-         session.setAttribute("currentSessionUser",u3); 
+
+         HttpSession session = request.getSession();
+         session.setAttribute("currentSessionUser",u3);
          response.sendRedirect(request.getContextPath() + "/HomeFeed");
     }else
     {
          response.sendRedirect(request.getContextPath() + "/invalidLogin.jsp");
     }
-} 
-		
-		
-catch (Throwable theException) 	    
+}
+
+
+catch (Throwable theException)
 {
-     System.out.println(theException); 
+     System.out.println(theException);
 }
        }
 	}

@@ -1,16 +1,16 @@
 package it.unibo.tw.web.beans;
 
-import java.sql.Blob;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ProfiloProfessionista extends ProfiloUtente 
+public class ProfiloProfessionista extends ProfiloUtente
 {
-	
-	private List<ProPost> pubblicazioni= new ArrayList<ProPost>();
+
+	private List<ProPost> pubblicazioni= new ArrayList<>();
 
 	private String zona;
-	
-	
+
+
 	public List<ProPost> getPubblicazioni() {
 		return pubblicazioni;
 	}
@@ -22,12 +22,12 @@ public class ProfiloProfessionista extends ProfiloUtente
 	public ProfiloProfessionista() {
 		super();
 	}
-	
+
 	public boolean condividiProPost(ProPost pp)
 	{
 		return this.pubblicazioni.add(pp);
 	}
-	
+
 	public boolean rimuoviProPost(ProPost pp)
 	{
 		return this.pubblicazioni.remove(pp);
@@ -47,7 +47,7 @@ public class ProfiloProfessionista extends ProfiloUtente
 	public void setZona(String zona) {
 		this.zona = zona;
 	}
-	
-	
-	
+
+
+
 }

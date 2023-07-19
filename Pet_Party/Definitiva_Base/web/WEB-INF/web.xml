@@ -68,8 +68,17 @@
 		<url-pattern>/LoginServlet</url-pattern>
 	</servlet-mapping>
 	
-
 	
+	<servlet>
+		<servlet-name>PostServlet</servlet-name>
+		<servlet-class>it.unibo.tw.web.servlets.PostServlet</servlet-class>
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>PostServlet</servlet-name>
+		<url-pattern>/postServlet</url-pattern>
+	</servlet-mapping>
 	<!-- Welcome pages -->
 	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
 

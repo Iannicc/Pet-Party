@@ -1,14 +1,16 @@
 package it.unibo.tw.web.beans;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
-public class CondivisionePro 
+public class CondivisionePro
 {
 	private Professionista autore;
-	private List<ProPost> pubblicati=new ArrayList<ProPost>();
+	private List<ProPost> pubblicati=new ArrayList<>();
 	private Date timeStamp;
-	
-	
+
+
 	public Professionista getAutore() {
 		return autore;
 	}
@@ -36,7 +38,7 @@ public class CondivisionePro
 		this.pubblicati = pubblicati;
 		this.timeStamp = timeStamp;
 	}
-	
-	
-	
+
+
+
 }

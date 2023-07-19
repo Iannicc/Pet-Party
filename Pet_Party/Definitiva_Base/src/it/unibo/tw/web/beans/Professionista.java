@@ -2,12 +2,12 @@ package it.unibo.tw.web.beans;
 
 import java.util.List;
 
-public class Professionista extends UtenteStandard 
+public class Professionista extends UtenteStandard
 {
 	private String professione;
 	private String specializzazione;
 	private boolean abilitato;
-	
+
 	public String getProfessione() {
 		return professione;
 	}
@@ -36,7 +36,7 @@ public class Professionista extends UtenteStandard
 		this.specializzazione = specializzazione;
 		this.abilitato = abilitato;
 	}
-	
-	
-	
+
+
+
 }

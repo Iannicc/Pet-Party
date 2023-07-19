@@ -2,7 +2,7 @@ package it.unibo.tw.web.beans;
 
 import java.sql.Date;
 
-public class VoceDiLog 
+public class VoceDiLog
 {
 	private Date timestamp;
 	private String descrizione;
@@ -34,7 +34,7 @@ public class VoceDiLog
 		this.descrizione = descrizione;
 		this.operazione = operazione;
 	}
-	
-	
-	
+
+
+
 }

@@ -1,9 +1,9 @@
 package it.unibo.tw.web.beans;
 
-public abstract class Account 
+public abstract class Account
 {
 	private String username;
-	
+
 	private String password;
 
 	public String getUsername() {
@@ -13,7 +13,7 @@ public abstract class Account
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -31,7 +31,7 @@ public abstract class Account
 		this.username = username;
 		this.password = password;
 	}
-	
-	
-	
+
+
+
 }

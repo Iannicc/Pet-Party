@@ -1,6 +1,6 @@
 package it.unibo.tw.web.beans;
 
-public enum Motivo 
+public enum Motivo
 {
 	Spam,
 	Nudo,

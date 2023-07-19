@@ -1,10 +1,11 @@
 package it.unibo.tw.web.beans;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Assistente extends Account
 {
-	private List<Segnalazione> segnalazioni=new ArrayList<Segnalazione>();
+	private List<Segnalazione> segnalazioni=new ArrayList<>();
 
 	public List<Segnalazione> getSegnalazioni() {
 		return segnalazioni;
@@ -17,9 +18,9 @@ public class Assistente extends Account
 	public Assistente() {
 		super();
 	}
-	
-	
-	
+
+
+
 	public Assistente(String username, List<Segnalazione> segnalazioni, String password) {
 		super(username, password);
 		this.segnalazioni = segnalazioni;
@@ -29,10 +30,10 @@ public class Assistente extends Account
 	{
 		return this.segnalazioni.add(s);
 	}
-	
+
 	public boolean removeSegnalazione(Segnalazione s)
 	{
 		return this.segnalazioni.remove(s);
 	}
-	
+
 }

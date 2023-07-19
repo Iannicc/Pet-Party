@@ -1,17 +1,16 @@
 package it.unibo.tw.web.beans;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProfiloUtente extends Profilo 
+public class ProfiloUtente extends Profilo
 {
 	private String Cognome;
 	private String telefono;
-	private List<Animale> animali=new ArrayList<Animale>();
+	private List<Animale> animali=new ArrayList<>();
 
-	
-	
+
+
 	public List<Animale> getAnimali() {
 		return animali;
 	}
@@ -33,14 +32,14 @@ public class ProfiloUtente extends Profilo
 	public ProfiloUtente() {
 		super();
 	}
-	
+
 	public ProfiloUtente(String nome, String descrizione, String immagine, String cognome, String telefono, List<Animale> animali) {
 		super(nome,descrizione,immagine);
 		Cognome = cognome;
 		this.telefono = telefono;
 		this.animali = animali;
 	}
-	
-	
-	
+
+
+
 }

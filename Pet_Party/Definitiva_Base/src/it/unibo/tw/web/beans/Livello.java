@@ -1,6 +1,6 @@
 package it.unibo.tw.web.beans;
 
-public enum Livello 
+public enum Livello
 {
 	Basso,
 	Medio,

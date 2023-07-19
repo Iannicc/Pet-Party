@@ -28,7 +28,7 @@
       <body>
 
          <center>
-           	<form method="POST" action="PostServlet">
+           	<form method="POST" action="postServlet" enctype='multipart/form-data'>
            	<div class="form-group">
         		<label for="media">Media</label>
         		<input type="file" id="media" name="media" required>
@@ -44,8 +44,8 @@
       		{
       			%>
       			<div class="form-group">
-        		<label for="password"><%a.getNome(); %></label>
-        		<input type="checkbox" name="checkbox" value=<%a.getNome(); %>>
+        		<label for="password"><%=a.getNome() %></label>
+        		<input type="checkbox" name="checkbox" value=<%= a.getNome() %>>
       			</div>
       			<%
       		}

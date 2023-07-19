@@ -1,6 +1,6 @@
 package it.unibo.tw.web.beans;
 
-public class Like 
+public class Like
 {
 	private String usernameUtente;
 
@@ -20,7 +20,7 @@ public class Like
 		super();
 		this.usernameUtente = usernameUtente;
 	}
-	
-	
-	
+
+
+
 }
