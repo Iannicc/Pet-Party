@@ -96,12 +96,9 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 	            {
 	            	a.condividiPost(p);
 	            }
-	            if (raffigurati.isEmpty()) {
-	            	user.setUsername("caltanissetta");
-	            }
 	            this.getServletContext().setAttribute(user.getUsername(),user );
 	            session.setAttribute("currentSessionUser", user);
-	            request.getRequestDispatcher("HomeProva.jsp").forward(request, response);
+	            response.sendRedirect("HomeProva.jsp");
 		}
 
 	        catch (Throwable theException)

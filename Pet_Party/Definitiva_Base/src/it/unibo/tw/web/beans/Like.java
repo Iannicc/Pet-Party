@@ -1,6 +1,6 @@
 package it.unibo.tw.web.beans;
 
-public class Like
+public class Like implements Comparable<Object>
 {
 	private String usernameUtente;
 	private Post post;
@@ -29,6 +29,15 @@ public class Like
 
 	public void setPost(Post post) {
 		this.post = post;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		if(this.getPost() == ((Like) o).getPost() && this.getUsernameUtente() == ((Like) o).getUsernameUtente()){
+			return 0;
+		}
+		return -1;
 	}
 
 

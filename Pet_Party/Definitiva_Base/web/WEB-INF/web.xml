@@ -24,6 +24,17 @@
 	</servlet-mapping>
 	
 	
+	<servlet>
+		<servlet-name>LikeServlet</servlet-name>
+		<servlet-class>it.unibo.tw.web.servlets.LikeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LikeServlet</servlet-name>
+		<url-pattern>/LikeServlet</url-pattern>
+	</servlet-mapping>
+	
+	
 	
 	<servlet>
 
