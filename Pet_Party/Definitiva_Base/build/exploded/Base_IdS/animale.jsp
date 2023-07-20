@@ -51,10 +51,11 @@
       <div class="header__right">
         <div class="header__info">
         <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-          <img class="user__avatar"
+          <img class="user__avatar_pointer"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
             onclick="gotoProfilo(document.getElementById('curruser'))" />
-          <h4 id="curruser"><%=utenteLoggato.getUsername() %></h4>
+          <h4 id="curruser" style="display:none;" class="hidden"><%=utenteLoggato.getUsername()%></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome()%> <%=utenteLoggato.getProfilo().getCognome()%></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -313,7 +314,7 @@
 
                                 <button type="button" class="post__option">
                                   <span class="material-icons"> chat_bubble_outline </span>
-                                  <p>Commentis</p>
+                                  <p>Commenti</p>
                                 </button>
 
                               <br>

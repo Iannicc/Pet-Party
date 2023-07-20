@@ -46,10 +46,11 @@
       <div class="header__right">
         <div class="header__info">
         <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-          <img class="user__avatar"
+          <img class="user__avatar_pointer"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
             onclick="gotoProfilo(document.getElementById('curruser'))" />
-          <h4 id="curruser"><%=utenteLoggato.getUsername() %></h4>
+           <h4 id="curruser" style="display:none;" class="hidden"><%=utenteLoggato.getUsername()%></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -260,7 +261,7 @@
 			               <div class="post">
 			               
 			               		<div class="post__top__left">
-			               			<img class="user__avatar post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
+			               			<img class="user__avatar_pointer post__avatar" src="<%=followed.getProfilo().getImage()%>" onclick="gotoProfilo(document.getElementById('usr<%=i%>'))"/>
 			               			
 			               		   <div class="post__topInfo">
 			               		   	<p  style="display:none;" class="hidden" id="usr<%=i%>"><%=followed.getUsername()%></p >

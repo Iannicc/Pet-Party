@@ -8,6 +8,9 @@ button {
 	cursor: pointer;
 
 }
+.animale {
+  cursor: pointer;
+}
 
 .hidden {
 	display: none !important;
@@ -33,7 +36,14 @@ a:link {
 
 .user__avatar {
   border-radius: 50%;
-  width: 65px;
+  width: 50px;
+  height: 50px;
+}
+.user__avatar_pointer {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
 }
 
 .header {

@@ -62,7 +62,7 @@ String username = request.getParameter("username");
             class="user__avatar"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
           />
-          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome()%> <%=utenteLoggato.getProfilo().getCognome()%></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>

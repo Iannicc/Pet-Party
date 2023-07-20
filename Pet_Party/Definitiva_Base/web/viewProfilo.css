@@ -30,9 +30,28 @@ a:link {
 
 .user__avatar {
   border-radius: 50%;
-  width: 65px;
+  width: 50px;
+  height: 50px;
 }
+.animale{
+	cursor: pointer;
+}
+.profile{
+  height: 600px;
+  width: 500px;
+  margin-top: 15px;
+  border-radius: 15px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  background-color: white;
+  padding-left: 1%;
 
+}
+.user__avatar_pointer {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
 .header {
   padding: 15px 20px;
   display: flex;
