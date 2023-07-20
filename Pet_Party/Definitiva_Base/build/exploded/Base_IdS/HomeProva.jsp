@@ -7,7 +7,8 @@
 <%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
 <html lang="en">
-<script type="text/javascript" src="scripts/toProfilo.js"></script>  <head>
+<script type="text/javascript" src="scripts/toProfilo.js"></script>
+<script type="text/javascript" src="scripts/toCommenti.js"></script>  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -301,7 +302,7 @@
 					              <p>Like</p>
 					            </button>
 					
-					            <button type="button" class="post__option">
+					            <button type="button" class="post__option" onclick="gotoCommenti('<%=followed.getUsername()%>','<%=post.getId()%>')">
 					              <span class="material-icons"> chat_bubble_outline </span>
 					              <p>Commenti</p>
 					            </button>

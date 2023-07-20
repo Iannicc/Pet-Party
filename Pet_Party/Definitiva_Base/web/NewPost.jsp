@@ -7,6 +7,7 @@
 
 <html lang="en">
   <head>
+  <script type="text/javascript" src="scripts/toProfilo.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -44,12 +45,12 @@
 
       <div class="header__right">
         <div class="header__info">
-          <img
-          <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-            class="user__avatar"
+        <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
+          <img class="user__avatar_pointer"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
-          />
-          <h4><%=utenteLoggato.getProfilo().getNome()%> <%=utenteLoggato.getProfilo().getCognome()%></h4>
+            onclick="gotoProfilo(document.getElementById('curruser'))" />
+           <h4 id="curruser" style="display:none;" class="hidden"><%=utenteLoggato.getUsername()%></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>

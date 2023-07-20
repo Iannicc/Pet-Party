@@ -1,26 +1,23 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashSet" %>
 <%@ page import="it.unibo.tw.web.beans.Post" %>
 <%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
 <%@ page import="it.unibo.tw.web.beans.Animale" %>
 <%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
+<%@ page import="it.unibo.tw.web.beans.Profilo" %>
+<%@ page import="it.unibo.tw.web.beans.ProfiloUtente" %>
 
 <html lang="en">
-  <head>
+<script type="text/javascript" src="scripts/toProfilo.js"></script>
+<script type="text/javascript" src="scripts/toCommenti.js"></script>  <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>View Post</title>
-    <link rel="stylesheet" href="ViewPost.css" />
+    <title>Pet Party View Post</title>
+    <link rel="stylesheet" href="HomeProva.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    
-   
-   <script> 
-    function viewPost(){
-    }
-    </script>
-    
   </head>
   <body>
     <!-- header starts -->
@@ -38,11 +35,11 @@
 
       <div class="header__middle">
       
-        <div class="header__option ">
+        <div class="header__option active">
           <a href="HomeProva.jsp" class="material-icons"> home </a>
         </div>
             
-        <div class="header__option active">
+        <div class="header__option">
         	<a href="NewPost.jsp" class="material-icons"> add_circle </a>
         </div>
        
@@ -51,12 +48,12 @@
 
       <div class="header__right">
         <div class="header__info">
-          <img
-          <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-            class="user__avatar"
+        <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
+          <img class="user__avatar_pointer"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
-          />
-          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
+            onclick="gotoProfilo(document.getElementById('curruser'))" />
+           <h4 id="curruser" style="display:none;" class="hidden"><%=utenteLoggato.getUsername()%></h4>
+          <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -250,18 +247,28 @@
         <!-- post ends -->
 
         <!-- post starts -->
-        <div class="createpost" align="center">
-   
-		     	<%PostAnimale post = (PostAnimale) request.getSession().getAttribute("currentPost"); 
-		     	 UtenteStandard utentePost = (UtenteStandard) request.getSession().getAttribute("currentUtentePost");
-		     	%>
-		     	<div class="post">
+        <div class="post">
+		 <% String username = request.getParameter("username");
+			UtenteStandard utentePost = (UtenteStandard) getServletContext().getAttribute(username);
+		 	String id = request.getParameter("post");
+		 	int idInt = Integer.parseInt(id);
+		   
+		 ProfiloUtente profUt = utentePost.getProfilo();
+         PostAnimale post=null;
+         for (Animale a : profUt.getAnimali()){
+             for (PostAnimale po : a.getPosts()){
+                 if (po.getId() == idInt)
+                     post=po;
+             }
+         } %>
+		  <div class="post">
 			               
 			               		<div class="post__top__left">
-			               			<img class="user__avatar post__avatar" src="<%=utentePost.getProfilo().getImage()%>"/>
-			               			
+			               			<img class="user__avatar_pointer post__avatar" src="<%=utentePost.getProfilo().getImage()%>"/>
 			               			
 			               		   <div class="post__topInfo">
+			               		   	<p  style="display:none;" class="hidden" ><%=utentePost.getUsername()%></p >
+			               		   	<p  style="display:none;" class="hidden" id="<%=id %>"><%=post.getId()%></p >
 							         <h3><%= utentePost.getProfilo().getNome() %> <%= utentePost.getProfilo().getCognome() %>  </h3>
 							         
 							         <p><%= post.getDataCreazione() %></p>
@@ -291,22 +298,25 @@
 			                       <img src=<%= post.getBase64() %> alt="Immagine base64"  >
 			                      </div>
 			                     
-							    <div class="post__options">
-                                <button type="button" class="postoption">
-                                  <span class="material-icons"> thumb_up </span>
-                                  <p>Like</p>
-                                </button>
+							   <div class="post__options">
+					            <button type="button" class="post__option">
+					              <span class="material-icons"> thumb_up </span>
+					              <p>Like</p>
+					            </button>
+					
+					            <button type="button" class="post__option" onclick="gotoCommenti('<%=utentePost.getUsername()%>','<%=post.getId()%>')">
+					              <span class="material-icons"> chat_bubble_outline </span>
+					              <p>Commenti</p>
+					            </button>
 
-                                <button type="button" class="post__option">
-                                  <span class="material-icons"> chat_bubble_outline </span>
-                                  <p>Commenti</p>
-                                </button>
 					
 					          <br>
 					          </div>
-			               </div>
-           	
-        </div>
+			               </div>    
+      
+		      
+		      
+        </div> 
         <!-- post ends -->
 
         <!-- post starts -->
@@ -329,5 +339,10 @@
       src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
       nonce="zUxEq08J"
     ></script>
+    
+    
+	   
+		
+		
   </body>
 </html>
