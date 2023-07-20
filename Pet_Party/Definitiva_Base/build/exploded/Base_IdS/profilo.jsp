@@ -25,7 +25,7 @@
 String username = request.getParameter("username");
 %>
          <title>   Profilo di <%=username%>   </title>
-    <link rel="stylesheet" href="HomeProva.css" />
+    <link rel="stylesheet" href="viewProfilo.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
     <body>

@@ -1,35 +1,27 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashSet" %>
+<%@ page import="it.unibo.tw.web.beans.Post" %>
+<%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
+<%@ page import="it.unibo.tw.web.beans.Animale" %>
+<%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
 
-   <%@ page language="java" 
-         contentType="text/html; charset=windows-1256"
-         pageEncoding="windows-1256"
-         import="it.unibo.tw.web.beans.UserBean"
-   %>
-   <%@page import="it.unibo.tw.web.beans.UtenteStandard" %>
-   <%@page import="it.unibo.tw.web.beans.ProfiloUtente" %>
-   <%@page import="it.unibo.tw.web.beans.Profilo" %>
-   
-   <%@page import="it.unibo.tw.web.beans.ProfiloProfessionista" %>
-   <%@page import="it.unibo.tw.web.beans.Professionista" %>
-   <%@page import="it.unibo.tw.web.beans.Animale" %>
-   <%@page import="it.unibo.tw.web.beans.PostAnimale" %>
-   <%@page import="it.unibo.tw.web.beans.Animale" %>
-   
-   <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
-   "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="UTF-8" />
+<html lang="en">
+<script type="text/javascript" src="scripts/toProfilo.js"></script>  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   		<%
+		String username = request.getParameter("username");
+		   String animale = request.getParameter("animale");
+		%>
+         <title>   Profilo di <%=animale%>   </title>
+             <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <%
-String username = request.getParameter("username");
-   String animale = request.getParameter("animale");
-%>
-         <title>   Profilo di <%=animale%>   </title>
-    <link rel="stylesheet" href="HomeProva.css" />
+    <title>Pet Party Home</title>
+    <link rel="stylesheet" href="animale.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
-    <body>
+  <body>
     <!-- header starts -->
     <div class="header">
       <div class="header__left">
@@ -45,11 +37,11 @@ String username = request.getParameter("username");
 
       <div class="header__middle">
       
-        <div class="header__option ">
+        <div class="header__option active">
           <a href="HomeProva.jsp" class="material-icons"> home </a>
         </div>
             
-        <div class="header__option active">
+        <div class="header__option">
         	<a href="NewPost.jsp" class="material-icons"> add_circle </a>
         </div>
        
@@ -58,12 +50,11 @@ String username = request.getParameter("username");
 
       <div class="header__right">
         <div class="header__info">
-          <img
-          <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
-            class="user__avatar"
+        <%UtenteStandard utenteLoggato = (UtenteStandard) request.getSession().getAttribute("currentSessionUser");  %>
+          <img class="user__avatar"
             src="<%=utenteLoggato.getProfilo().getImage() %>"
-          />
-          <h4><%=utenteLoggato.getProfilo().getNome()%></h4>
+            onclick="gotoProfilo(document.getElementById('curruser'))" />
+          <h4 id="curruser"><%=utenteLoggato.getUsername() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
       </div>
@@ -257,7 +248,7 @@ String username = request.getParameter("username");
         <!-- post ends -->
 
         <!-- post starts -->
-        <div class="profile" align="center">
+      <div class="profile" align="center" >
    
 		     	<%
 		     	
@@ -270,7 +261,7 @@ String username = request.getParameter("username");
 		     	%>
 		     	<h1><%=toShow.getNome() %></h1>
 		     	<h2><%=toShow.getDescrizione() %></h2>
-		     	<img  src="<%= toShow.getImage() %>"/>
+		     	<img  src="<%= toShow.getImage() %>" width=300px height=auto/>
 		     	<h3>Dati generali:</h3>
 		     	<div>razza: <%= toShow.getRazza() %></div>
 		     	<div>specie: <%= toShow.getSpecie() %></div>
@@ -322,14 +313,14 @@ String username = request.getParameter("username");
 
                                 <button type="button" class="post__option">
                                   <span class="material-icons"> chat_bubble_outline </span>
-                                  <p>Commenti</p>
+                                  <p>Commentis</p>
                                 </button>
 
                               <br>
                               </div>
 					
 					          <br>
-					          </div>
+					     </div>
 			               
 		        <%    
 		        }
@@ -348,7 +339,6 @@ String username = request.getParameter("username");
       <div style="flex: 0.33" class="widgets">
         
       </div>
-    </div>
     <!-- main body ends -->
 
     <div id="fb-root"></div>
@@ -359,7 +349,10 @@ String username = request.getParameter("username");
       src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
       nonce="zUxEq08J"
     ></script>
-  </body>
-     
     
+    
+	   
+		
+		
+  </body>
 </html>

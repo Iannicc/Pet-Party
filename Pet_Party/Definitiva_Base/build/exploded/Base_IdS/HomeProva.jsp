@@ -338,6 +338,21 @@
       nonce="zUxEq08J"
     ></script>
     
+    
+	    <script>
+		function mettiLike(username, id) {
+			UtenteStandard utentePost = (UtenteStandard) getServletContext.getAttribute(username); 
+			Profilo profUt = utentePost.getProfilo();
+			PostAnimale p;
+			for (Animale a : profUt.getAnimali()){
+				for (PostAnimale po : a.getPosts()){
+					if (po.getId() == id)
+						p=po;
+				}
+			}
+			Like like = new Like(username, po);
+		}
+		</script>
 		
 		
   </body>
