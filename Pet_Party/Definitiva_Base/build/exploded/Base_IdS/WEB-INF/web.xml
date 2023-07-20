@@ -94,7 +94,7 @@
 	<!-- pleonastico: tomcat "tenta" in automatico le index.html e index.jsp -->
 
 	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>Home.jsp</welcome-file>
 	</welcome-file-list>
 
 	<!-- Handle exceptions and errors -->

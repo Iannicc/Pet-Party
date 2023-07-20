@@ -5,18 +5,29 @@
 <%@ page import="it.unibo.tw.web.beans.UtenteStandard" %>
 <%@ page import="it.unibo.tw.web.beans.Animale" %>
 <%@ page import="it.unibo.tw.web.beans.PostAnimale" %>
+<%@ page import="it.unibo.tw.web.beans.Like" %>
 
 <html lang="en">
 <script type="text/javascript" src="scripts/toProfilo.js"></script>
 <script type="text/javascript" src="scripts/toCommenti.js"></script>  <head>
+
+
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Party Home</title>
-    <link rel="stylesheet" href="HomeProva.css" />
+    <link rel="stylesheet" type="text/css" href="HomeProva.css?ts=<?=time()?>" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   </head>
+  <script>
+		function gi‡Like(like) {
+			
+			 const btn = document.getElementById(like)
+	    	 const color = getComputedStyle(btn)
+	    	 btn.style.color = "rgb(46, 129, 244)"
+		}
+		</script>
   <body>
     <!-- header starts -->
     <div class="header">
@@ -54,6 +65,9 @@
           <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
+        <span>
+        	<a href="Login.jsp" class="material-icons"> logout </a>
+        </span>
       </div>
     </div>
     <!-- header ends -->
@@ -297,10 +311,19 @@
 			                      </div>
 			                     
 							   <div class="post__options">
-					            <button type="button" class="post__option" onclick="mettiLike(document.getElementById('usr<%=i%>'), document.getElementById('postId<%=i%>'))">
-					              <span class="material-icons"> thumb_up </span>
-					              <p>Like</p>
+					            <button type="button" id="idLike<%=i %>" class="post__option like"  onclick="mettiLike(document.getElementById('usr<%=i%>'), document.getElementById('postId<%=i%>'), 'idLike<%=i%>', 'numeroLike<%=i%>')">
+					              <span class="material-icons"> pets </span>
+					              <p>  Like &nbsp</p>
+					              <div id="numeroLike<%=i %>">  <%=post.getLikes().size() %></div>
 					            </button>
+					            <%for (Like l : post.getLikes()){
+					            	if (l.getUsernameUtente() == utenteLoggato.getUsername()){
+					            		%>
+										    <script>
+												gi‡Like('idLike<%=i%>')
+									        </script>
+					            	<%}
+					            	}%>
 					
 					            <button type="button" class="post__option" onclick="gotoCommenti('<%=followed.getUsername()%>','<%=post.getId()%>')">
 					              <span class="material-icons"> chat_bubble_outline </span>
@@ -339,22 +362,64 @@
       src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0"
       nonce="zUxEq08J"
     ></script>
+    <script>
+     function buttonColor(id){
+    	 const btn = document.getElementById(id)
+    	 const color = getComputedStyle(btn)
+    	 if (color.color == "rgb(46, 129, 244)"){
+    		 btn.style.color = "#000000"
+    	 }
+    	 else{
+    		 btn.style.color = "rgb(46, 129, 244)"
+    	 }
+    			 
+     }
     
+    </script>
     
 	    <script>
-		function mettiLike(username, id) {
-			UtenteStandard utentePost = (UtenteStandard) getServletContext.getAttribute(username); 
-			Profilo profUt = utentePost.getProfilo();
-			PostAnimale p;
-			for (Animale a : profUt.getAnimali()){
-				for (PostAnimale po : a.getPosts()){
-					if (po.getId() == id)
-						p=po;
-				}
-			}
-			Like like = new Like(username, po);
+		function mettiLike(username, id, like, numero) {
+			
+			nome= username.innerHTML;
+			id= id.innerHTML;
+			
+			const dataToSend = new URLSearchParams();
+			dataToSend.append('nome', nome);
+			dataToSend.append('id', id);
+			
+			 const servletUrl = "LikeServlet";
+			 console.log(dataToSend);
+			 
+			 const btn = document.getElementById(like)
+	    	 const color = getComputedStyle(btn)
+	    	 
+		    var container = document.getElementById(numero);
+	    	 var newContent = container.innerHTML
+
+	    	 if (color.color == "rgb(46, 129, 244)"){
+	    		 btn.style.color = "#000000"
+	    		 newContent--;
+	    	 }
+	    	 else{
+	    		 btn.style.color = "rgb(46, 129, 244)"
+	    		 newContent++;
+
+	    	 }
+			 
+			 fetch(servletUrl,  { method: "POST", body: dataToSend })
+			 .then(response => {
+				    // Gestisci la risposta della servlet qui
+				    console.log("Risposta della servlet:", response);
+				  })
+				  .catch(error => {
+				    console.error("Si Ë verificato un errore:", error);
+				  });
+			 container.innerHTML= newContent;
+			 console.log(container.innerHTML, newContent)
 		}
 		</script>
+		
+		
 		
 		
   </body>

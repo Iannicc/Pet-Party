@@ -53,6 +53,9 @@
           <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
+        <span>
+        	<a href="Login.jsp" class="material-icons"> logout </a>
+        </span>
       </div>
     </div>
     <!-- header ends -->

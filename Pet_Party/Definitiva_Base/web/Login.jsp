@@ -35,9 +35,9 @@
     </form>
   	
   	<div class="register-link">
-    	Non hai un account? <a href="Registrazione.html">Registrati</a>
+    	Non hai un account? <a href="html/Registrazione.html">Registrati</a>
 	    </br>
-		Sei un <a href="RegistrazionePro.html">professionista</a>? 
+		Sei un <a href="html/RegistrazionePro.html">professionista</a>? 
  	 </div>
 	</div>
   </div>

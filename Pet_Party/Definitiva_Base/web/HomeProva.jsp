@@ -65,6 +65,9 @@
           <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
+        <span>
+        	<a href="Login.jsp" class="material-icons"> logout </a>
+        </span>
       </div>
     </div>
     <!-- header ends -->
@@ -309,7 +312,7 @@
 			                     
 							   <div class="post__options">
 					            <button type="button" id="idLike<%=i %>" class="post__option like"  onclick="mettiLike(document.getElementById('usr<%=i%>'), document.getElementById('postId<%=i%>'), 'idLike<%=i%>', 'numeroLike<%=i%>')">
-					              <span class="material-icons"> thumb_up </span>
+					              <span class="material-icons"> pets </span>
 					              <p>  Like &nbsp</p>
 					              <div id="numeroLike<%=i %>">  <%=post.getLikes().size() %></div>
 					            </button>

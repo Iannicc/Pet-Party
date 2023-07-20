@@ -14,7 +14,7 @@
 
 	<body>
 
-		<img class="pupp" src="<%= request.getContextPath() %>/html/pup.png" />
+		<img class="pupp" src="<%= request.getContextPath() %>/Puppy275.jpg" />
 		
 		
 		  <h2 id="text">Pet

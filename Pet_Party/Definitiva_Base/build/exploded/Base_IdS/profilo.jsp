@@ -65,6 +65,9 @@ String username = request.getParameter("username");
           <h4><%=utenteLoggato.getProfilo().getNome()%> <%=utenteLoggato.getProfilo().getCognome()%></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
+        <span>
+        	<a href="Login.jsp" class="material-icons"> logout </a>
+        </span>
       </div>
     </div>
     <!-- header ends -->
@@ -276,7 +279,7 @@ String username = request.getParameter("username");
 		     		<h4>Specializzazione: <%= p.getSpecializzazione() %></h4>
 		     	<%	}
 		     	%>
-		     	
+		     	<br><br>
 		     	<%
 		     	int i=0;
 		     	for (Animale a: u.getProfilo().getAnimali())
@@ -286,6 +289,7 @@ String username = request.getParameter("username");
 		     			
 		     			<h2 id="anim<%=i%>"><%= a.getNome() %></h2>
 		     		</div>
+		     		<br><br>
 		     	<%
 		     	i++;
 		     	}

@@ -78,9 +78,11 @@ public class LoginServlet extends HttpServlet {
 		String pathDogGiorgio="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiorgio.jpg";
 		String pathCatImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\catDavide.jpeg";
 		String pathDogImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\dogGiacomo.jpeg";
+		String pathSpiderImage= "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\quentin_tarantulino.jpg";
 		String dog2Base64 = convertImage(pathDogGiorgio);
 		String catBase64 = convertImage(pathCatImage);
 		String dogBase64 = convertImage(pathDogImage);
+		String spiderBase64 = convertImage(pathSpiderImage);
 		String pathGiorgio = "C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giorgio.jpeg";
 		String pathDavide ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\davide.jpg";
 		String pathGiacomo ="C:\\Users\\hp\\Documents\\GitHub\\Pet-Party\\Pet_Party\\Definitiva_Base\\web\\giacomo.jpeg";
@@ -106,6 +108,13 @@ public class LoginServlet extends HttpServlet {
         Animale a1 = new Animale();
         Animale a2 = new Animale();
         Animale a3 = new Animale();
+        Animale a4 = new Animale();
+        a4.setDescrizione("Aspirante regista");
+        a4.setNome("QuentinTarantulino");
+        a4.setSex(Sesso.Maschio);
+        a4.setSpecie("Aracnide");
+        a4.setRazza("Tarantola");
+        a4.setImage(spiderBase64);
         a3.setDescrizione("Labracadrabrador");
         a3.setNome("Mario");
         a3.setSex(Sesso.Maschio);
@@ -156,6 +165,7 @@ public class LoginServlet extends HttpServlet {
         a3list.add(a3);
         a1list.add(a1);
         a2list.add(a2);
+        a3list.add(a4);
         posts2.add(post2);
         posts1.add(post1);
         posts3.add(post3);

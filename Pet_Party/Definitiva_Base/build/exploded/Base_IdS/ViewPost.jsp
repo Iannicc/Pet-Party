@@ -56,6 +56,9 @@
           <h4><%=utenteLoggato.getProfilo().getNome() %> <%=utenteLoggato.getProfilo().getCognome() %></h4>
         </div>
         <span class="material-icons"> notifications_active </span>
+        <span>
+        	<a href="Login.jsp" class="material-icons"> logout </a>
+        </span>
       </div>
     </div>
     <!-- header ends -->
@@ -300,7 +303,7 @@
 			                     
 							   <div class="post__options">
 					            <button type="button" class="post__option">
-					              <span class="material-icons"> thumb_up </span>
+					              <span class="material-icons"> pets </span>
 					              <p>Like</p>
 					            </button>
 					
